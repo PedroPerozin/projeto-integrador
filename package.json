@@ -1,0 +1,30 @@
+{
+  "name": "projeto-integrador",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "concurrently \"mongod\" \"nodemon app.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VMichelan/projeto-integrador.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VMichelan/projeto-integrador/issues"
+  },
+  "homepage": "https://github.com/VMichelan/projeto-integrador#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.10",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "concurrently": "^4.0.1",
+    "nodemon": "^1.18.3"
+  }
+}
