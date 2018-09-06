@@ -1,3 +1,31 @@
+.header{
+   height: 200px;
+   background:  #1a1a1a;
+}
+.div{
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.divmenu{
+  margin-top: 5%;
+  margin-left: 5%;
+  float: left;
+
+}
+
+
+.button{
+  background: none;
+  border: none;
+  color: white;
+  font-size: 30px;
+  text-align: center;
+  line-height: 40px;
+  text-shadow: #858282;
+
+}
+
 .form{
     border-style: solid;
     border-color: #fcfbfb;
