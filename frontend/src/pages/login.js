@@ -28,8 +28,8 @@ class Login extends Component {
 						                placeholder="Digite sua senha" />
 
 						            <Button className="btn btn-info btn-color margin-button" type="submit" color="primary">Entrar!</Button><br/>
-									<p>Ainda não é cadastrado? <Link to="/cadastro">Cadastre-se!</Link><br/>
-									<Link to="/">Esqueceu sua senha?</Link></p>
+									<p>Ainda não é cadastrado? <Link to="/cadastro">Cadastre-se!</Link><br/></p>
+					
 
 						        </Form>
 					    	</div>
