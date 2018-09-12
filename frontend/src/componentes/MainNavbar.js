@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink, } from 'reactstrap';
-import "./MainNavbar.css";
+//import "./MainNavbar.css";
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -15,7 +15,7 @@ class MainNavbar extends Component {
     render() {
         return (
             <div className="App">
-                <Navbar color="secondary shadow-lg">
+                <Navbar color="secondary">
 
                     <Nav className="mr-auto">
                         <NavbarBrand href="" className="text-light"><b>UTFPR Reservas</b></NavbarBrand>

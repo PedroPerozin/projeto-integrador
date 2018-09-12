@@ -3,7 +3,7 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom'
 
 import Login from './pages/login.js'
 import Cadastro from './pages/cadastro.js'
-import MainNavbar from './pages/MainNavbar.js'
+import MainNavbar from './componentes/MainNavbar.js'
 import './App.css';
 
 class App extends Component {
