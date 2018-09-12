@@ -5,6 +5,7 @@ import {
   Button,
 } from 'reactstrap';
 
+
 class Cadastro extends Component {
 
 	constructor(props) {
