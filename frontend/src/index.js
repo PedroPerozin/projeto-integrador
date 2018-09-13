@@ -11,5 +11,6 @@ axios.defaults.headers = {
     "Authorization": localStorage.getItem("token")
 }
 
+
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
