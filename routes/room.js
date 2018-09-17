@@ -1,8 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const Room = require("../models/room");
+const verifyToken = require("../auth/auth").verifyToken;
+const csvFilePath = "/Volumes/Data/Users/jeffersonmantovani/Development/UTFPR/PI/projeto-integrador/salas.csv";
+const csv = require("csvtojson");
 
-router.get("/", async (req, res) => {
+
+router.get("/", verifyToken, async (req, res) => {
   try {
     const rooms = await Room.find();
     if (rooms) {
@@ -11,7 +15,7 @@ router.get("/", async (req, res) => {
         data: {
           rooms
         }
-      })
+      });
     } else {
       res.status(404).json({
         success: false,
@@ -26,7 +30,36 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get('/:_id', async (req, res) => {
+router.get("/from-csv", async (req, res) => {
+  try {
+
+    const rooms = await csv().fromFile(csvFilePath);
+
+    if (rooms) {
+      res.status(200).json({
+        success: true,
+        message: "Success to format csv to json",
+        data: {
+          rooms
+        }
+      })
+    } else {
+      res.status(404).json({
+        success: false,
+        message: "Something is wrong."
+      })
+    }
+
+
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message
+    })
+  }
+})
+
+router.get('/:_id', verifyToken, async (req, res) => {
   try {
     const room = await Room.findById(req.params._id);
     if (room) {
@@ -50,7 +83,7 @@ router.get('/:_id', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', verifyToken, async (req, res) => {
   try {
     const newRoom = new Room({
       ...req.body
@@ -71,7 +104,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:_id', async (req, res) => {
+router.put('/:_id', verifyToken, async (req, res) => {
   try {
     const room = await Room.findById(req.params._id);
     if (room) {
@@ -99,7 +132,7 @@ router.put('/:_id', async (req, res) => {
   }
 });
 
-router.delete("/:_id", async (req, res) => {
+router.delete("/:_id", verifyToken, async (req, res) => {
   try {
     const room = await Room.findById(req.params._id);
     if (room) {
