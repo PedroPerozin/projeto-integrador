@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const User = require("../models/user")
+const User = require("../models/user");
+const bcrypt = require('bcryptjs');
+const jwt = require("jsonwebtoken");
+const config = require("../config/database");
+
 
 router.get('/', async (req, res) => {
   try {
@@ -51,17 +55,22 @@ router.get('/:_id', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/signup', async (req, res) => {
   try {
-    const newUser = new User({
+    const newUser = await new User({
       ...req.body
-    })
+    });
+
+    let hash = await bcrypt.hashSync(req.body.password, 10);
+    newUser.password = hash;
+
     await newUser.save();
+
     res.status(200).json({
       success: true,
       message: "User has created",
       data: {
-        user: newUser
+        newUser
       }
     });
   } catch (error) {
@@ -71,6 +80,44 @@ router.post('/', async (req, res) => {
     });
   }
 });
+
+router.post("/signin", async (req, res) => {
+  try {
+    const user = await User.findOne({
+      email: req.body.email
+    })
+
+    const match = await bcrypt.compareSync(req.body.password, user.password);
+
+    const token = jwt.sign({
+      user: {
+        _id: user._id,
+        email: user.email,
+        admin: user.admin
+      }
+    }, config.secret);
+
+    if (match) {
+      res.status(200).json({
+        success: true,
+        message: "User password match",
+        data: {
+          token
+        }
+      });
+    } else {
+      res.status(404).json({
+        success: false,
+        message: "User password not found"
+      });
+    }
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message
+    });
+  }
+})
 
 router.put('/:_id', async (req, res) => {
   try {

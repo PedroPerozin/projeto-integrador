@@ -1,0 +1,2986 @@
+{
+	"info": {
+		"_postman_id": "4abaf116-12e9-47da-b3e8-4af9d91adb0f",
+		"name": "UTFPR Eventos - Teste de rotas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/api/reserves/5b84af4be3831e1fb5a47959",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "professor",
+							"value": "5b84add4922b2e1f5773323d",
+							"type": "text"
+						},
+						{
+							"key": "room",
+							"value": "5b84ae05922b2e1f5773323e",
+							"type": "text"
+						},
+						{
+							"key": "equipments",
+							"value": "5b84ae23922b2e1f5773323f",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "27/08/2018",
+							"type": "text"
+						},
+						{
+							"key": "hour",
+							"value": "N1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/reserves/5b84af4be3831e1fb5a47959",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"reserves",
+						"5b84af4be3831e1fb5a47959"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/reserves/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "professor",
+							"value": "5b84add4922b2e1f5773323d",
+							"type": "text"
+						},
+						{
+							"key": "room",
+							"value": "5b84ae05922b2e1f5773323e",
+							"type": "text"
+						},
+						{
+							"key": "equipments",
+							"value": "5b84ae23922b2e1f5773323f",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "27/08/2018",
+							"type": "text"
+						},
+						{
+							"key": "hour",
+							"value": "N1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/reserves/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"reserves",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/reserves/5b84af3afb0a391faafb6266",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "professor",
+							"value": "5b84add4922b2e1f5773323d",
+							"type": "text"
+						},
+						{
+							"key": "room",
+							"value": "5b84ae05922b2e1f5773323e",
+							"type": "text"
+						},
+						{
+							"key": "equipments",
+							"value": "5b84ae23922b2e1f5773323f",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "27/08/2018",
+							"type": "text"
+						},
+						{
+							"key": "hour",
+							"value": "N1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/reserves/5b84af3afb0a391faafb6266",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"reserves",
+						"5b84af3afb0a391faafb6266"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/reserves/5b84af3afb0a391faafb6266",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "professor",
+							"value": "5b84add4922b2e1f5773323d",
+							"type": "text"
+						},
+						{
+							"key": "room",
+							"value": "5b84ae05922b2e1f5773323e",
+							"type": "text"
+						},
+						{
+							"key": "equipments",
+							"value": "5b84ae23922b2e1f5773323f",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "27/08/2018",
+							"type": "text"
+						},
+						{
+							"key": "hour",
+							"value": "N1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/reserves/5b84af3afb0a391faafb6266",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"reserves",
+						"5b84af3afb0a391faafb6266"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/reserves/5b84af3afb0a391faafb6266",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "professor",
+							"value": "5b84add4922b2e1f5773323d",
+							"type": "text"
+						},
+						{
+							"key": "room",
+							"value": "5b84ae05922b2e1f5773323e",
+							"type": "text"
+						},
+						{
+							"key": "equipments",
+							"value": "5b84ae23922b2e1f5773323f",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "27/08/2018",
+							"type": "text"
+						},
+						{
+							"key": "hour",
+							"value": "N1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/reserves/5b84af3afb0a391faafb6266",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"reserves",
+						"5b84af3afb0a391faafb6266"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/reserves/5b84af3afb0a391faafb6266",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "professor",
+							"value": "5b84add4922b2e1f5773323d",
+							"type": "text"
+						},
+						{
+							"key": "room",
+							"value": "5b84ae05922b2e1f5773323e",
+							"type": "text"
+						},
+						{
+							"key": "equipments",
+							"value": "5b84ae23922b2e1f5773323f",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "27/08/2018",
+							"type": "text"
+						},
+						{
+							"key": "hour",
+							"value": "N1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/reserves/5b84af3afb0a391faafb6266",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"reserves",
+						"5b84af3afb0a391faafb6266"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/reserves/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "professor",
+							"value": "5b84add4922b2e1f5773323d",
+							"type": "text"
+						},
+						{
+							"key": "room",
+							"value": "5b84ae05922b2e1f5773323e",
+							"type": "text"
+						},
+						{
+							"key": "equipments",
+							"value": "5b84ae23922b2e1f5773323f",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "27/08/2018",
+							"type": "text"
+						},
+						{
+							"key": "hour",
+							"value": "N1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/reserves/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"reserves",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/reserves/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "professor",
+							"value": "5b84add4922b2e1f5773323d",
+							"type": "text"
+						},
+						{
+							"key": "room",
+							"value": "5b84ae05922b2e1f5773323e",
+							"type": "text"
+						},
+						{
+							"key": "equipments",
+							"value": "5b84ae23922b2e1f5773323f",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "27/08/2018",
+							"type": "text"
+						},
+						{
+							"key": "hour",
+							"value": "N1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/reserves/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"reserves",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/reserves/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "professor",
+							"value": "5b84add4922b2e1f5773323d",
+							"type": "text"
+						},
+						{
+							"key": "room",
+							"value": "5b84ae05922b2e1f5773323e",
+							"type": "text"
+						},
+						{
+							"key": "equipments",
+							"value": "5b84ae23922b2e1f5773323f",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "27/08/2018",
+							"type": "text"
+						},
+						{
+							"key": "hour",
+							"value": "N1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/reserves/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"reserves",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/reserves/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "professor",
+							"value": "5b84add4922b2e1f5773323d",
+							"type": "text"
+						},
+						{
+							"key": "room",
+							"value": "5b84ae05922b2e1f5773323e",
+							"type": "text"
+						},
+						{
+							"key": "equipment",
+							"value": "5b84ae23922b2e1f5773323f",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "27/08/2018",
+							"type": "text"
+						},
+						{
+							"key": "hour",
+							"value": "N1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/reserves/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"reserves",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/equipments/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "professor",
+							"value": "5b84add4922b2e1f5773323d",
+							"type": "text"
+						},
+						{
+							"key": "room",
+							"value": "5b84ae05922b2e1f5773323e",
+							"type": "text"
+						},
+						{
+							"key": "equipment",
+							"value": "5b84ae23922b2e1f5773323f",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "27/08/2018",
+							"type": "text"
+						},
+						{
+							"key": "hour",
+							"value": "N1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/equipments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"equipments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/equipments/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "description",
+							"value": "Arduino",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/equipments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"equipments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/rooms/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "cod",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "lab",
+							"type": "text"
+						},
+						{
+							"key": "capacity",
+							"value": "44",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/rooms/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"rooms",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/users/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Testerson",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "teste@teste",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345",
+							"type": "text"
+						},
+						{
+							"key": "admin",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/equipments/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "description",
+							"value": "Mouse",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "capacity",
+							"value": "40",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/equipments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"equipments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/equipments/5b84ac3d181d6d1ef1f7ef1f",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "description",
+							"value": "Mouse",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "capacity",
+							"value": "40",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/equipments/5b84ac3d181d6d1ef1f7ef1f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"equipments",
+						"5b84ac3d181d6d1ef1f7ef1f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/equipments/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "description",
+							"value": "Mouse",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "capacity",
+							"value": "40",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/equipments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"equipments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/equipments/5b84ac24975b191ee5960fec",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "description",
+							"value": "Mouse",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "capacity",
+							"value": "40",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/equipments/5b84ac24975b191ee5960fec",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"equipments",
+						"5b84ac24975b191ee5960fec"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/equipments/5b84ac24975b191ee5960fec",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "description",
+							"value": "Mouse",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "capacity",
+							"value": "40",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/equipments/5b84ac24975b191ee5960fec",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"equipments",
+						"5b84ac24975b191ee5960fec"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/equipments/5b84ac24975b191ee5960fec",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "description",
+							"value": "Mouse",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "capacity",
+							"value": "40",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/equipments/5b84ac24975b191ee5960fec",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"equipments",
+						"5b84ac24975b191ee5960fec"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/equipments/5b84ac24975b191ee5960fec",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "description",
+							"value": "Arduino",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "capacity",
+							"value": "40",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/equipments/5b84ac24975b191ee5960fec",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"equipments",
+						"5b84ac24975b191ee5960fec"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/equipments/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "description",
+							"value": "Arduino",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "capacity",
+							"value": "40",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/equipments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"equipments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/equipments/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "description",
+							"value": "Arduino",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "capacity",
+							"value": "40",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/equipments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"equipments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/equipments/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "description",
+							"value": "Arduino",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "capacity",
+							"value": "40",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/equipments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"equipments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/equipments/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "description",
+							"value": "Arduino",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "capacity",
+							"value": "40",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/equipments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"equipments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/equipments/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "description",
+							"value": "Arduino",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "capacity",
+							"value": "40",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/equipments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"equipments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/equipments/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "description",
+							"value": "Arduino",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "capacity",
+							"value": "40",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/equipments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"equipments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/equipments/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "description",
+							"value": "Arduino",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "capacity",
+							"value": "40",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/equipments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"equipments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/equipments/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "description",
+							"value": "Arduino",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "capacity",
+							"value": "40",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/equipments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"equipments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/equipments/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "description",
+							"value": "Arduino",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "capacity",
+							"value": "40",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/equipments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"equipments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/rooms/5b84a90d8aab861d725285e5",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "cod",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text"
+						},
+						{
+							"key": "capacity",
+							"value": "40",
+							"type": "text"
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/rooms/5b84a90d8aab861d725285e5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"rooms",
+						"5b84a90d8aab861d725285e5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/rooms/5b84a90d8aab861d725285e5",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "cod",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text"
+						},
+						{
+							"key": "capacity",
+							"value": "40",
+							"type": "text"
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/rooms/5b84a90d8aab861d725285e5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"rooms",
+						"5b84a90d8aab861d725285e5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/rooms/5b84a90d8aab861d725285e5",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "cod",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text"
+						},
+						{
+							"key": "capacity",
+							"value": "40",
+							"type": "text"
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/rooms/5b84a90d8aab861d725285e5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"rooms",
+						"5b84a90d8aab861d725285e5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/rooms/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "cod",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text"
+						},
+						{
+							"key": "capacity",
+							"value": "40",
+							"type": "text"
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/rooms/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"rooms",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/rooms/5b84a90d8aab861d725285e5",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "cod",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text"
+						},
+						{
+							"key": "capacity",
+							"value": "40",
+							"type": "text"
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/rooms/5b84a90d8aab861d725285e5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"rooms",
+						"5b84a90d8aab861d725285e5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/rooms/5b84a90d8aab861d725285e5",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "cod",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text"
+						},
+						{
+							"key": "capacity",
+							"value": "40",
+							"type": "text"
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/rooms/5b84a90d8aab861d725285e5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"rooms",
+						"5b84a90d8aab861d725285e5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/rooms/5b84a90d8aab861d725285e5",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "cod",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text"
+						},
+						{
+							"key": "capacity",
+							"value": "40",
+							"type": "text"
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/rooms/5b84a90d8aab861d725285e5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"rooms",
+						"5b84a90d8aab861d725285e5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/rooms/5b84a90d8aab861d725285e5",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "cod",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text"
+						},
+						{
+							"key": "capacity",
+							"value": "40",
+							"type": "text"
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/rooms/5b84a90d8aab861d725285e5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"rooms",
+						"5b84a90d8aab861d725285e5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/rooms",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "cod",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text"
+						},
+						{
+							"key": "capacity",
+							"value": "44",
+							"type": "text"
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/rooms",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"rooms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/rooms",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "cod",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text"
+						},
+						{
+							"key": "capacity",
+							"value": "44",
+							"type": "text"
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/rooms",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"rooms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/rooms",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "cod",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text"
+						},
+						{
+							"key": "capacity",
+							"value": "44",
+							"type": "text"
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/rooms",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"rooms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/rooms",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "cod",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Lab",
+							"type": "text"
+						},
+						{
+							"key": "capacity",
+							"value": "44",
+							"type": "text"
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/rooms",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"rooms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/users/5b84a5394b53e41bf80e785c",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Jefferson",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "jmantovani@alunos.utfpr.edy.br",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users/5b84a5394b53e41bf80e785c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"5b84a5394b53e41bf80e785c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/users/5b84a5394b53e41bf80e785c",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Jefferson",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "jmantovani@alunos.utfpr.edy.br",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users/5b84a5394b53e41bf80e785c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"5b84a5394b53e41bf80e785c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/users/5b84a5394b53e41bf80e785c",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Jefferson",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "jmantovani@alunos.utfpr.edy.br",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users/5b84a5394b53e41bf80e785c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"5b84a5394b53e41bf80e785c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/users/5b84a5394b53e41bf80e785c",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Jefferson",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "jmantovani@alunos.utfpr.edy.br",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "admin",
+							"value": "false",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users/5b84a5394b53e41bf80e785c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"5b84a5394b53e41bf80e785c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/users/5b84a5394b53e41bf80e785c",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Jefferson",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "jmantovani@alunos.utfpr.edy.br",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "admin",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users/5b84a5394b53e41bf80e785c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"5b84a5394b53e41bf80e785c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Jefferson",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "jmantovani@alunos.utfpr.edy.br",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "admin",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/users",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Jefferson",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "jmantovani@alunos.utfpr.edy.br",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "admin",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/users",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Jefferson",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "jmantovani@alunos.utfpr.edy.br",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "admin",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": false
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InByb2ZpbGVzIjpbXSwiX2lkIjoiNWI4M2ZkYzRkNGMzNzkwZTU1ZjcyY2YzIiwic2hvcnROYW1lIjoiamVmZm1hbnQifSwiaWF0IjoxNTM1Mzc2ODM3LCJleHAiOjE1MzU1NDk2Mzd9.hKOx7PqSUvpOI2iFV-Wg8MVtBf2SPGe86rI70P1T9qc",
+						"disabled": false
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

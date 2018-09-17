@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const Equipment = require("../models/equipment");
-const Reserve = require("../models/reserve")
+const Reserve = require("../models/reserve");
+const verifyToken = require("../auth/auth").verifyToken;
 
-router.get("/", async (req, res) => {
+
+router.get("/", verifyToken, async (req, res) => {
   try {
     const equipments = await Equipment.find();
     if (equipments) {
@@ -27,7 +29,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get('/:_id', async (req, res) => {
+router.get('/:_id', verifyToken, async (req, res) => {
   try {
     const equipment = await Equipment.findById(req.params._id);
     if (equipment) {
@@ -51,7 +53,7 @@ router.get('/:_id', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', verifyToken, async (req, res) => {
   try {
     const newEquipment = new Equipment({
       ...req.body
@@ -72,7 +74,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:_id', async (req, res) => {
+router.put('/:_id', verifyToken, async (req, res) => {
   try {
     const equipment = await Equipment.findById(req.params._id);
     if (equipment) {
@@ -100,7 +102,7 @@ router.put('/:_id', async (req, res) => {
   }
 });
 
-router.delete("/:_id", async (req, res) => {
+router.delete("/:_id", verifyToken, async (req, res) => {
   try {
     const equipment = await Equipment.findById(req.params._id);
     if (equipment) {
