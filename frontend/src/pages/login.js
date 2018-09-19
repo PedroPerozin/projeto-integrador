@@ -3,8 +3,60 @@ import { Link } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import './login.css';
+import axios from 'axios';
 
-class Login extends Component {
+
+
+
+export default class Login extends Component {
+	
+	constructor(props) {
+        super(props);
+
+        this.state = {
+            email: '',
+            senha: ''
+        };
+
+        this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        console.log(JSON.stringify({
+                   
+                    "email":this.state.email,
+                    "password":this.state.password
+
+                })
+        );
+            fetch("http://localhost:3001/api/users/signin", {
+                method:"POST",
+                headers: {
+                    "Content-Type":"application/json"
+                },
+                body: JSON.stringify({
+                    "email":this.state.email,
+                    "password":this.state.password
+
+                })
+            }).then((response) => response.json()).then((json) => {
+                if (json.success) {
+                    window.location.href = "/cadastro"
+                }
+                else {
+                    alert("Usuário ou senha incorreto");
+                }
+            }).catch( error => {
+                alert("Não foi possível conectar com o servidor. Tente novamente mais tarde");
+            });
+        
+
+    }
+	
+	
+
+	
 
 	render() {
 		return ( 
@@ -18,16 +70,18 @@ class Login extends Component {
 						            
 						            <Input 
 						                type="email"
-						                name="email"
+										name="email"
+										onChange={(e) => this.setState({email: e.target.value})}
 						                required
 						                placeholder="Digite seu e-mail" />
 
 						            <Input type="password"
-						                name="password"
-						                required
+										name="password"
+									    onChange={(e) => this.setState({password: e.target.value})}
+										required
 						                placeholder="Digite sua senha" />
 
-						            <Button className="btn btn-info btn-color margin-button" type="submit" color="primary">Entrar!</Button><br/>
+						            <Button className="btn btn-info btn-color margin-button" type="submit" color="primary"  onClick={this.handleSubmit}>Entrar!</Button><br/>
 									<p>Ainda não é cadastrado? <Link to="/cadastro">Cadastre-se!</Link><br/></p>
 					
 
@@ -41,4 +95,3 @@ class Login extends Component {
   	}
 }
 
-export default Login;
