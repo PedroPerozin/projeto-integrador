@@ -2,13 +2,16 @@ const express = require("express");
 const router = express.Router();
 const Reserve = require("../models/reserve");
 const verifyToken = require("../auth/auth").verifyToken;
+const csv = require("csvtojson");
+const User = require("../models/user");
+const Room = require("../models/room");
 
 
 router.get("/", verifyToken, async (req, res) => {
   try {
     const reserves = await Reserve.find().populate({
-      path: "professor",
-      model: "User"
+      path: "user",
+      model: "User",
     }).populate({
       path: "room",
       model: "Room"
@@ -36,6 +39,81 @@ router.get("/", verifyToken, async (req, res) => {
     });
   }
 });
+
+router.post("/from-csv", async (req, res) => {
+  try {
+    const csvFilePath = req.body.path;
+
+    const jsonReserves = await csv({
+      headers: ['room_cod', 'room_type', 'room_capacity', 'schedule', 'course_cod', 'class_cod', 'course_name', 'professor'],
+      delimiter: ';',
+      ignoreEmpty: true
+    }).fromFile(csvFilePath);
+
+    console.log(jsonReserves);
+
+    const user = await User.findOne({
+      email: "sistema_academico@email.com"
+    });
+
+    console.log(user)
+
+    console.log(jsonReserves[0].schedule[0])
+    console.log(typeof jsonReserves[0].schedule[0])
+
+    // const room = await Room.findOne({
+    //   cod: jsonReserves[0].room_cod
+    // })
+
+    // const reserve = await Reserve.create({
+    //   room,
+    //   user,
+    //   day: jsonReserves[0].schedule[0],
+    //   hour: jsonReserves[0].schedule[1] + jsonReserves[0].schedule[2],
+    // })
+
+
+
+    jsonReserves.forEach(async jsonReserve => {
+      let room = await Room.findOne({
+        cod: jsonReserve.room_cod
+      });
+
+      if (!room) {
+        room = await Room.create({
+          cod: jsonReserve.room_cod,
+          type: jsonReserve.room_type,
+          capacity: jsonReserve.room_capacity
+        });
+      }
+
+      let reserve = await Reserve.create({
+        user: user._id,
+        room: room._id,
+        day: jsonReserve.schedule[0],
+        hour: jsonReserve.schedule[1] + jsonReserve.schedule[2]
+      })
+
+      if (reserve) {
+        room.reserves.push(reserve);
+        await room.save()
+      }
+
+    })
+
+    res.status(200).json({
+      success: true,
+      message: "The reserves from csv has been formated to json and saved.",
+    })
+
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    })
+  }
+})
 
 router.get('/:_id', verifyToken, async (req, res) => {
   try {
