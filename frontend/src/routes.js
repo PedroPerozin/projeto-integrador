@@ -5,13 +5,12 @@ import Cadastro from './pages/cadastro.js'
 import MainNavbar from './componentes/MainNavbar.js'
 import PaginaCalendario from './pages/paginacalendario.js'
 import { isAuthenticated } from './authToken.js'
-import ViewCalendario from './pages/viewcalendario.js';
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={props => (
         isAuthenticated() ? (
             <Component {...props} />
         ) : (
-                <Redirect to={{ pathname: '/viewcalendario', state: { from: props.location } }} />
+                <Redirect to={{ pathname: '/', state: { from: props.location } }} />
             )
     )} />
 )
@@ -21,8 +20,7 @@ const Routes = () => (
         <Switch>
             <Route path="/" exact={true} component={Login} />
             <Route path="/cadastro" exact={true} component={Cadastro} />
-            <PrivateRoute path="/calendario" exact={true} component={PaginaCalendario} />
-            <Route path="/viewcalendario" exact={true} component={ViewCalendario} />
+            <Route path="/calendario" exact={true} component={PaginaCalendario} />
         </Switch>
     </BrowserRouter>
 );
