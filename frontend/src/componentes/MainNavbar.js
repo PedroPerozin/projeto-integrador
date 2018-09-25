@@ -9,9 +9,23 @@ import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faSignOutAlt)
 
+ 
 
 
 class MainNavbar extends Component {
+
+    constructor(props) {
+        super(props);
+
+
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+
+    handleClick(){
+        localStorage.clear();
+    }
+
     render() {
         if(isAuthenticated()){
         return (
@@ -47,9 +61,9 @@ class MainNavbar extends Component {
                         </NavItem>
                     </Nav>
 
-                    <Nav className="ml-auto">
+                    <Nav className="ml-auto" >
                         <NavItem>
-                            <NavLink href="" className="text-light"><FontAwesomeIcon icon="sign-out-alt" /> <b>Logout</b></NavLink>
+                            <NavLink href="/" className="text-light" onClick={this.handleClick} ><FontAwesomeIcon icon="sign-out-alt"  /> <b>Logout</b></NavLink>
                         </NavItem>
                     </Nav>
                 </Navbar>
