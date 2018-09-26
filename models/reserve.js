@@ -40,4 +40,4 @@ Object.assign(ReserveSchema.statics, {
   status
 });
 
-module.exports = mongoose.model('Reserve', ReserveSchema)
+module.exports = mongoose.model("Reserve", ReserveSchema)
