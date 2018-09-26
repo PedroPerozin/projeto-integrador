@@ -58,11 +58,11 @@ router.post("/from-csv", async (req, res) => {
     });
 
     if (!user) {
-      user = await User.create({
-        email: "sistema_academico@email.com",
-        name: "Sistema Acadêmico",
-        password: "sistemaacademico"
-      })
+        res.status(400).json({
+            success: false,
+            message: "Usuário do sistema academico não encontrado",
+        });
+        return;
     }
 
     await Reserve.deleteMany({
