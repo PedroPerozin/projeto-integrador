@@ -80,56 +80,46 @@ router.post("/from-csv", async (req, res) => {
       day_end = new Date(half.getFullYear(), 11)
     }
 
-    jsonReserves.sort(function (a, b) {
+    jsonReserves.forEach(async jsonReserve => {
+      const newDate = await DateModel.create({
+        day_begin,
+        day_end,
+        day: jsonReserve.schedule[0],
+        hour: jsonReserve.schedule[1] + jsonReserve.schedule[2]
+      })
 
-      return (a.professor > b.professor) ? 1 : ((b.professor > a.professor) ? -1 : 0);
+      let room = await Room.findOne({
+        cod: jsonReserve.room_cod
+      });
 
-    });
+      if (!room) {
+        room = await Room.create({
+          cod: jsonReserve.room_cod,
+          type: jsonReserve.room_type,
+          capacity: jsonReserve.room_capacity
+        });
+      }
 
-    console.log(jsonReserves)
+      let reserve = await Reserve.findOne({
+        room,
+        day: jsonReserve.schedule[0],
+      })
 
-    // jsonReserves.forEach(async jsonReserve => {
-    //   const newDate = await DateModel.create({
-    //     day_begin,
-    //     day_end,
-    //     day: jsonReserve.schedule[0],
-    //     hour: jsonReserve.schedule[1] + jsonReserve.schedule[2]
-    //   })
+      reserve = await Reserve.create({
+        user,
+        room,
+        status: "accept",
+        date: newDate
+      })
 
-    //   let room = await Room.findOne({
-    //     cod: jsonReserve.room_cod
-    //   });
+      if (reserve) {
+        room.reserves.push(reserve);
+        newDate.reserve = reserve;
+        await newDate.save();
+        await room.save();
+      }
 
-    //   if (!room) {
-    //     room = await Room.create({
-    //       cod: jsonReserve.room_cod,
-    //       type: jsonReserve.room_type,
-    //       capacity: jsonReserve.room_capacity
-    //     });
-    //   }
-
-
-
-    //   let reserve = await Reserve.findOne({
-    //     room,
-    //     day: jsonReserve.schedule[0],
-    //   })
-
-    //   reserve = await Reserve.create({
-    //     user,
-    //     room,
-    //     status: "accept",
-    //     date: newDate
-    //   })
-
-    //   if (reserve) {
-    //     room.reserves.push(reserve);
-    //     newDate.reserve = reserve;
-    //     await newDate.save();
-    //     await room.save();
-    //   }
-
-    // })
+    })
 
     res.status(200).json({
       success: true,
