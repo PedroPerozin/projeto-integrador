@@ -33,31 +33,27 @@ const days = Object.freeze({
 
 const DateSchema = new Schema({
   day_begin: {
-    type: Schema.Types.Date
+    type: Schema.Types.Date,
+    required: true,
   },
   day_end: {
-    type: Schema.Types.Date
+    type: Schema.Types.Date,
+    required: true,
   },
   day: {
     type: Schema.Types.String,
     required: true,
     enum: Object.values(days),
   },
-  // Before script
-  hour: {
+  hour: [{
     type: Schema.Types.String,
     required: true,
     enum: Object.values(schedule),
-  },
-  // After script
-  // hour: [{
-  //   type: Schema.Types.String,
-  //   required: true,
-  //   enum: Object.values(schedule),
-  // }],
+  }],
   reserve: {
     type: Schema.Types.ObjectId,
-    ref: "Reserve"
+    ref: "Reserve",
+    required: true
   }
 })
 
