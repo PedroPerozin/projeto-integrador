@@ -30,75 +30,37 @@ class Reserva extends Component {
                       <Col>
                         <FormGroup check>
                           <Label check>
-                            <Input type="radio" name="radio1" />{' '}M1 07:30
+                            <Input type="checkbox" name="m1" />{' '}M1 07:30
                           </Label>
                         </FormGroup>
 
                         <FormGroup check>
                           <Label check>
-                            <Input type="radio" name="radio1" />{' '}M2 08:20
+                            <Input type="checkbox" name="m2" />{' '}M2 08:20
                           </Label>
                         </FormGroup>
 
                         <FormGroup check>
                           <Label check>
-                            <Input type="radio" name="radio1" />{' '}M3 09:10
+                            <Input type="checkbox" name="m3" />{' '}M3 09:10
                           </Label>
                         </FormGroup>
 
                         <FormGroup check>
                           <Label check>
-                            <Input type="radio" name="radio1" />{' '}M4 10:20
+                            <Input type="checkbox" name="m4" />{' '}M4 10:20
                           </Label>
                         </FormGroup>
 
                         <FormGroup check>
                           <Label check>
-                            <Input type="radio" name="radio1" />{' '}M5 11:10
+                            <Input type="checkbox" name="m5" />{' '}M5 11:10
                           </Label>
                         </FormGroup>
 
                         <FormGroup check>
                           <Label check>
-                            <Input type="radio" name="radio1" />{' '}M6 12:00
-                          </Label>
-                        </FormGroup>
-                      </Col>
-
-                      <Col>
-                        <FormGroup check>
-                          <Label check>
-                            <Input type="radio" name="radio1" />{' '}T1 13:00
-                          </Label>
-                        </FormGroup>
-
-                        <FormGroup check>
-                          <Label check>
-                            <Input type="radio" name="radio1" />{' '}T2 13:50
-                          </Label>
-                        </FormGroup>
-
-                        <FormGroup check>
-                          <Label check>
-                            <Input type="radio" name="radio1" />{' '}T3 14:40
-                          </Label>
-                        </FormGroup>
-
-                        <FormGroup check>
-                          <Label check>
-                            <Input type="radio" name="radio1" />{' '}T4 15:50
-                          </Label>
-                        </FormGroup>
-
-                        <FormGroup check>
-                          <Label check>
-                            <Input type="radio" name="radio1" />{' '}T5 16:40
-                          </Label>
-                        </FormGroup>
-
-                        <FormGroup check>
-                          <Label check>
-                            <Input type="radio" name="radio1" />{' '}T6 17:30
+                            <Input type="checkbox" name="m6" />{' '}M6 12:00
                           </Label>
                         </FormGroup>
                       </Col>
@@ -106,31 +68,69 @@ class Reserva extends Component {
                       <Col>
                         <FormGroup check>
                           <Label check>
-                            <Input type="radio" name="radio1" />{' '}N1 18:40
+                            <Input type="checkbox" name="t1" />{' '}T1 13:00
                           </Label>
                         </FormGroup>
 
                         <FormGroup check>
                           <Label check>
-                            <Input type="radio" name="radio1" />{' '}N2 19:30
+                            <Input type="checkbox" name="t2" />{' '}T2 13:50
                           </Label>
                         </FormGroup>
 
                         <FormGroup check>
                           <Label check>
-                            <Input type="radio" name="radio1" />{' '}N3 20:20
+                            <Input type="checkbox" name="t3" />{' '}T3 14:40
                           </Label>
                         </FormGroup>
 
                         <FormGroup check>
                           <Label check>
-                            <Input type="radio" name="radio1" />{' '}N4 21:20
+                            <Input type="checkbox" name="t4" />{' '}T4 15:50
                           </Label>
                         </FormGroup>
 
                         <FormGroup check>
                           <Label check>
-                            <Input type="radio" name="radio1" />{' '}N5 22:10
+                            <Input type="checkbox" name="t5" />{' '}T5 16:40
+                          </Label>
+                        </FormGroup>
+
+                        <FormGroup check>
+                          <Label check>
+                            <Input type="checkbox" name="t6" />{' '}T6 17:30
+                          </Label>
+                        </FormGroup>
+                      </Col>
+
+                      <Col>
+                        <FormGroup check>
+                          <Label check>
+                            <Input type="checkbox" name="n1" />{' '}N1 18:40
+                          </Label>
+                        </FormGroup>
+
+                        <FormGroup check>
+                          <Label check>
+                            <Input type="checkbox" name="n2" />{' '}N2 19:30
+                          </Label>
+                        </FormGroup>
+
+                        <FormGroup check>
+                          <Label check>
+                            <Input type="checkbox" name="n3" />{' '}N3 20:20
+                          </Label>
+                        </FormGroup>
+
+                        <FormGroup check>
+                          <Label check>
+                            <Input type="checkbox" name="n4" />{' '}N4 21:20
+                          </Label>
+                        </FormGroup>
+
+                        <FormGroup check>
+                          <Label check>
+                            <Input type="checkbox" name="n5" />{' '}N5 22:10
                           </Label>
                         </FormGroup>
                       </Col>
