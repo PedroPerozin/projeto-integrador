@@ -7,7 +7,7 @@ const csv = require("csvtojson");
 
 
 
-router.get("/", verifyToken, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const rooms = await Room.find();
     if (rooms) {
@@ -37,7 +37,7 @@ router.post("/from-csv", async (req, res) => {
     const csvFilePath = req.body.path;
 
     const rooms = await csv({
-      noheader: false,
+      noheader: true,
       headers: ['cod', 'num', 'type', 'capacity'],
       delimiter: ";",
       ignoreEmpty: true
