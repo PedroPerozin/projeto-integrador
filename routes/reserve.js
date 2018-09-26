@@ -5,6 +5,7 @@ const verifyToken = require("../auth/auth").verifyToken;
 const csv = require("csvtojson");
 const User = require("../models/user");
 const Room = require("../models/room");
+const DateModel = require("../models/date");
 
 
 router.get("/", verifyToken, async (req, res) => {
@@ -56,50 +57,79 @@ router.post("/from-csv", async (req, res) => {
       email: "sistema_academico@email.com"
     });
 
-    console.log(user)
-
-    console.log(jsonReserves[0].schedule[0])
-    console.log(typeof jsonReserves[0].schedule[0])
-
-    // const room = await Room.findOne({
-    //   cod: jsonReserves[0].room_cod
-    // })
-
-    // const reserve = await Reserve.create({
-    //   room,
-    //   user,
-    //   day: jsonReserves[0].schedule[0],
-    //   hour: jsonReserves[0].schedule[1] + jsonReserves[0].schedule[2],
-    // })
-
-
-
-    jsonReserves.forEach(async jsonReserve => {
-      let room = await Room.findOne({
-        cod: jsonReserve.room_cod
-      });
-
-      if (!room) {
-        room = await Room.create({
-          cod: jsonReserve.room_cod,
-          type: jsonReserve.room_type,
-          capacity: jsonReserve.room_capacity
-        });
-      }
-
-      let reserve = await Reserve.create({
-        user: user._id,
-        room: room._id,
-        day: jsonReserve.schedule[0],
-        hour: jsonReserve.schedule[1] + jsonReserve.schedule[2]
+    if (!user) {
+      user = await User.create({
+        email: "sistema_academico@email.com",
+        name: "Sistema Acadêmico",
+        password: "sistemaacademico"
       })
+    }
 
-      if (reserve) {
-        room.reserves.push(reserve);
-        await room.save()
-      }
-
+    await Reserve.deleteMany({
+      _id: user._id
     })
+
+    const half = new Date()
+    let day_begin;
+    let day_end;
+    if (half.getMonth() < 7) {
+      day_begin = new Date(half.getFullYear(), 0)
+      day_end = new Date(half.getFullYear(), 6)
+    } else {
+      day_begin = new Date(half.getFullYear(), 7)
+      day_end = new Date(half.getFullYear(), 11)
+    }
+
+    jsonReserves.sort(function (a, b) {
+
+      return (a.professor > b.professor) ? 1 : ((b.professor > a.professor) ? -1 : 0);
+
+    });
+
+    console.log(jsonReserves)
+
+    // jsonReserves.forEach(async jsonReserve => {
+    //   const newDate = await DateModel.create({
+    //     day_begin,
+    //     day_end,
+    //     day: jsonReserve.schedule[0],
+    //     hour: jsonReserve.schedule[1] + jsonReserve.schedule[2]
+    //   })
+
+    //   let room = await Room.findOne({
+    //     cod: jsonReserve.room_cod
+    //   });
+
+    //   if (!room) {
+    //     room = await Room.create({
+    //       cod: jsonReserve.room_cod,
+    //       type: jsonReserve.room_type,
+    //       capacity: jsonReserve.room_capacity
+    //     });
+    //   }
+
+
+
+    //   let reserve = await Reserve.findOne({
+    //     room,
+    //     day: jsonReserve.schedule[0],
+    //   })
+
+    //   reserve = await Reserve.create({
+    //     user,
+    //     room,
+    //     status: "accept",
+    //     date: newDate
+    //   })
+
+    //   if (reserve) {
+    //     room.reserves.push(reserve);
+    //     newDate.reserve = reserve;
+    //     await newDate.save();
+    //     await room.save();
+    //   }
+
+    // })
 
     res.status(200).json({
       success: true,
