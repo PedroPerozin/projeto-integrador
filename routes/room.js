@@ -6,7 +6,7 @@ const csvFilePath = "/Volumes/Data/Users/jeffersonmantovani/Development/UTFPR/PI
 const csv = require("csvtojson");
 
 
-router.get("/", verifyToken, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const rooms = await Room.find();
     if (rooms) {
@@ -59,7 +59,7 @@ router.get("/from-csv", async (req, res) => {
   }
 })
 
-router.get('/:_id', verifyToken, async (req, res) => {
+router.get('/:_id', async (req, res) => {
   try {
     const room = await Room.findById(req.params._id);
     if (room) {
