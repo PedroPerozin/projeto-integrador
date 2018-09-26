@@ -13,8 +13,11 @@ const RoomSchema = new Schema({
   },
   capacity: {
     type: Schema.Types.Number,
-    required: true
-  }
+  },
+  reserves: [{
+    type: Schema.Types.ObjectId,
+    ref: "Reserve"
+  }]
 });
 
 module.exports = mongoose.model('Room', RoomSchema);

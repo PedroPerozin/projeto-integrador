@@ -2,9 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Room = require("../models/room");
 const verifyToken = require("../auth/auth").verifyToken;
-const csvFilePath = "/Volumes/Data/Users/jeffersonmantovani/Development/UTFPR/PI/projeto-integrador/salas.csv";
 const csv = require("csvtojson");
-
 
 router.get("/", async (req, res) => {
   try {
@@ -30,18 +28,31 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/from-csv", async (req, res) => {
+router.post("/from-csv", async (req, res) => {
   try {
 
-    const rooms = await csv().fromFile(csvFilePath);
+    const csvFilePath = req.body.path;
+
+    const rooms = await csv({
+      noheader: true,
+      headers: ['cod', 'num', 'type', 'capacity'],
+      delimiter: ";",
+      ignoreEmpty: true
+    }).fromFile(csvFilePath);
+
+    rooms.forEach(room => {
+      Room.create({
+        cod: room.cod,
+        type: room.type,
+        capacity: room.capacity
+      })
+    })
 
     if (rooms) {
       res.status(200).json({
         success: true,
-        message: "Success to format csv to json",
-        data: {
-          rooms
-        }
+        message: "The rooms from csv has been formated to json and saved.",
+
       })
     } else {
       res.status(404).json({
