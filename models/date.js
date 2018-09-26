@@ -53,7 +53,7 @@ const DateSchema = new Schema({
   reserve: {
     type: Schema.Types.ObjectId,
     ref: "Reserve",
-    required: true
+    required: false
   }
 })
 
