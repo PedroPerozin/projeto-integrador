@@ -27,17 +27,25 @@ class Calendario extends Component {
             displayEventEnd: true,
             minTime:'07:30:00',
             timeFormat:'h:mm',
+            eventRender: function(event){
+                return (event.ranges.filter(function(range){ // test event against all the ranges
+
+                    return (event.start.isBefore(range.end) &&
+                        event.end.isAfter(range.start));
+
+                }).length)>0; //if it isn't in one of the ranges, don't render it (by returning false)
+            }
         });
         //this.updateEvents();
     }
 
     //updateEvents(){
-        //$('#calendar').fullCalendar( 'removeEvents');
-        //$('#calendar').fullCalendar('addEventSource', this.props.events);
+    //$('#calendar').fullCalendar( 'removeEvents');
+    //$('#calendar').fullCalendar('addEventSource', this.props.events);
     //}
 
     //componentDidUpdate(prevProps) {
-        //this.updateEvents();
+    //this.updateEvents();
     //} 
 
 

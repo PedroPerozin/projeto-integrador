@@ -74,22 +74,33 @@ class PaginaCalendario extends Component {
             if (json.success) {
                 reservas = json.data.reserve;
                 var reservasfinal = [];
+                console.log(reservas);
                 for(var i = 0;i < reservas.length;i++){
 
                     for(var j = 0;j < reservas[i].date.length;j++){
 
                         for(var h = 0;h < reservas[i].date[j].hour.length;h++){
 
+                            var data1 = new Date(reservas[i].date[j].day_begin.substring(0,4),parseInt(reservas[i].date[j].day_begin.substring(5,7))-1,reservas[i].date[j].day_begin.substring(8,10));
+                            console.log(reservas[i].date[j].day_begin.substring(0,4),reservas[i].date[j].day_begin.substring(5,7),reservas[i].date[j].day_begin.substring(8,10));
+                            console.log(data1);
+                            var data2 = new Date(reservas[i].date[j].day_end.substring(0,4),parseInt(reservas[i].date[j].day_end.substring(5,7))-1,reservas[i].date[j].day_end.substring(8,10));
+                            data2.setDate(data2.getDate()+1);
+                            console.log(data2);
+
+
                             reservasfinal.push({
                                 start:startHour[reservas[i].date[j].hour[h]],
                                 end:endHour[reservas[i].date[j].hour[h]],
                                 dow:[parseInt(reservas[i].date[j].day)-1],
-                                title:reservas[i].date[j].hour[h]
+                                title:reservas[i].date[j].hour[h],
+                                ranges:[{start:data1, end:data2 }]
                             });
 
                         }
                     }
                 }
+                console.log(reservasfinal);
                 $('#calendar').fullCalendar( 'removeEvents');
                 $('#calendar').fullCalendar('addEventSource', reservasfinal);
 
