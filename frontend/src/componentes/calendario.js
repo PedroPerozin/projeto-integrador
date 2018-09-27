@@ -6,12 +6,12 @@ import 'fullcalendar/dist/locale/pt-br.js'
 
 class Calendario extends Component {
 
-    constructor(props){
-        super(props);
+    //constructor(props){
+        //super(props);
 
-        this.updateEvents = this.updateEvents.bind(this);
+        //this.updateEvents = this.updateEvents.bind(this);
 
-    }
+    //}
 
     componentDidMount() {
         $('#calendar').fullCalendar({
@@ -28,17 +28,17 @@ class Calendario extends Component {
             minTime:'07:30:00',
             timeFormat:'h:mm',
         });
-        this.updateEvents();
+        //this.updateEvents();
     }
 
-    updateEvents(){
-        $('#calendar').fullCalendar( 'removeEvents');
-        $('#calendar').fullCalendar('addEventSource', this.props.events);
-    }
+    //updateEvents(){
+        //$('#calendar').fullCalendar( 'removeEvents');
+        //$('#calendar').fullCalendar('addEventSource', this.props.events);
+    //}
 
-    componentDidUpdate(prevProps) {
-        this.updateEvents();
-    } 
+    //componentDidUpdate(prevProps) {
+        //this.updateEvents();
+    //} 
 
 
     render(){
