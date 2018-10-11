@@ -211,14 +211,8 @@ router.post("/from-csv", async (req, res) => {
 
 router.post('/', verifyToken, async (req, res) => {
     try{
-        dateid = new ObjectID();
-        const newDate = new DateModel({
-            _id:dateid,
-            ...req.body.date[0]
-        });
-        await newDate.save();
+
         const roomCod = await Room.findOne({ cod: req.body.room });
-        const userId = await User.findOne({ email:req.body.user });
         if( !roomCod ){
             res.status(400).json({
                 sucess:false,
@@ -226,6 +220,8 @@ router.post('/', verifyToken, async (req, res) => {
             });
             return
         }
+
+        const userId = await User.findOne({ email:req.body.user });
         if( !userId ){
             res.status(400).json({
                 sucess:false,
@@ -233,6 +229,17 @@ router.post('/', verifyToken, async (req, res) => {
             });
             return
         }
+
+        var dateid = [];
+        for(i = 0; i < req.body.date.length; i++){
+            dateid.push(new ObjectID());
+            var newDate = new DateModel({
+                _id:dateid[i],
+                ...req.body.date[i]
+            });
+            await newDate.save();
+        }
+
         const newReserve = new Reserve({
             user:userId._id,
             room:roomCod._id,
@@ -248,6 +255,7 @@ router.post('/', verifyToken, async (req, res) => {
             }
         });
     } catch (error) {
+        console.log(error);
         res.status(400).json({
             sucess:false,
             message:error.message
