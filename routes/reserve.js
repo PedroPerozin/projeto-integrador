@@ -41,6 +41,76 @@ router.get("/", async (req, res) => {
     }
 });
 
+router.get("/from-user", verifyToken, async (req, res) => {
+    try {
+        let reserves;
+
+        if (req.query.status == "all") {
+            reserves = await Reserve.find({
+                user: req.decoded.user._id
+            });
+        } else {
+            reserves = await Reserve.find({
+                user: req.decoded.user._id,
+                status: req.query.status
+            });
+        }
+
+        if (!reserves) {
+            res.status(404).json({
+                success: false,
+                message: "Reserves not found.",
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Reserves has found.",
+            data: {
+                reserves
+            }
+        })
+
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            message: error.message
+        });
+    }
+})
+
+
+router.put("/cancel/:_id", verifyToken, async (req, res) => {
+    try {
+
+        const reserve = await Reserve.findById(req.params._id);
+
+        if (!reserve) {
+            res.status(404).json({
+                success: false,
+                message: "Reserve not found"
+            })
+        }
+
+        reserve.status = "canceled";
+        await reserve.save();
+
+        res.status(200).json({
+            success: true,
+            message: "Reserve has been canceled.",
+            data: {
+                reserve
+            }
+        });
+
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            message: error.message
+        });
+    }
+})
+
 router.get('/:_id', async (req, res) => {
     try {
         const reserve = await Reserve.findById(req.params._id).populate({
@@ -76,15 +146,19 @@ router.get('/:_id', async (req, res) => {
 
 router.get('/roomname/:_roomname', async (req, res) => {
     try {
-        const room = await Room.findOne({ cod:req.params._roomname });
-        if( !room ){
+        const room = await Room.findOne({
+            cod: req.params._roomname
+        });
+        if (!room) {
             res.status(400).json({
                 success: false,
                 message: "Sala não encontrada"
             })
             return
         }
-        const reserve = await Reserve.find({ room: room.id }).populate({
+        const reserve = await Reserve.find({
+            room: room.id
+        }).populate({
             path: "room",
             model: "Room"
         }).populate({
@@ -116,135 +190,139 @@ router.get('/roomname/:_roomname', async (req, res) => {
 });
 
 router.post("/from-csv", async (req, res) => {
-  try {
-    const csvFilePath = req.body.path;
+    try {
+        const csvFilePath = req.body.path;
 
-    const jsonReserves = await csv({
-      headers: ['room_cod', 'room_type', 'room_capacity', 'schedule', 'course_cod', 'class_cod', 'course_name', 'professor'],
-      delimiter: ';',
-      ignoreEmpty: true
-    }).fromFile(csvFilePath);
+        const jsonReserves = await csv({
+            headers: ['room_cod', 'room_type', 'room_capacity', 'schedule', 'course_cod', 'class_cod', 'course_name', 'professor'],
+            delimiter: ';',
+            ignoreEmpty: true
+        }).fromFile(csvFilePath);
 
-    console.log(jsonReserves);
+        console.log(jsonReserves);
 
-    const user = await User.findOne({
-      email: "sistema_academico@email.com"
-    });
+        const user = await User.findOne({
+            email: "sistema_academico@email.com"
+        });
 
-    if (!user) {
+        if (!user) {
+            res.status(400).json({
+                success: false,
+                message: "Usuário do sistema academico não encontrado",
+            });
+            return;
+        }
+
+        await Reserve.deleteMany({
+            _id: user._id
+        })
+
+        const half = new Date()
+        let day_begin;
+        let day_end;
+        if (half.getMonth() < 7) {
+            day_begin = new Date(half.getFullYear(), 0)
+            day_end = new Date(half.getFullYear(), 6)
+        } else {
+            day_begin = new Date(half.getFullYear(), 7)
+            day_end = new Date(half.getFullYear(), 11)
+        }
+
+        jsonReserves.forEach(async jsonReserve => {
+            const newDate = await DateModel.create({
+                day_begin,
+                day_end,
+                day: jsonReserve.schedule[0],
+                hour: jsonReserve.schedule[1] + jsonReserve.schedule[2]
+            })
+
+            let room = await Room.findOne({
+                cod: jsonReserve.room_cod
+            });
+
+            if (!room) {
+                room = await Room.create({
+                    cod: jsonReserve.room_cod,
+                    type: jsonReserve.room_type,
+                    capacity: jsonReserve.room_capacity
+                });
+            }
+
+            let reserve = await Reserve.findOne({
+                room,
+                day: jsonReserve.schedule[0],
+            })
+
+            reserve = await Reserve.create({
+                user,
+                room,
+                status: "accept",
+                date: newDate
+            })
+
+            if (reserve) {
+                room.reserves.push(reserve);
+                newDate.reserve = reserve;
+                await newDate.save();
+                await room.save();
+            }
+
+        })
+
+        res.status(200).json({
+            success: true,
+            message: "The reserves from csv has been formated to json and saved.",
+        })
+
+    } catch (error) {
+        console.log(error);
         res.status(400).json({
             success: false,
-            message: "Usuário do sistema academico não encontrado",
-        });
-        return;
+            message: error.message,
+        })
     }
-
-    await Reserve.deleteMany({
-      _id: user._id
-    })
-
-    const half = new Date()
-    let day_begin;
-    let day_end;
-    if (half.getMonth() < 7) {
-      day_begin = new Date(half.getFullYear(), 0)
-      day_end = new Date(half.getFullYear(), 6)
-    } else {
-      day_begin = new Date(half.getFullYear(), 7)
-      day_end = new Date(half.getFullYear(), 11)
-    }
-
-    jsonReserves.forEach(async jsonReserve => {
-      const newDate = await DateModel.create({
-        day_begin,
-        day_end,
-        day: jsonReserve.schedule[0],
-        hour: jsonReserve.schedule[1] + jsonReserve.schedule[2]
-      })
-
-      let room = await Room.findOne({
-        cod: jsonReserve.room_cod
-      });
-
-      if (!room) {
-        room = await Room.create({
-          cod: jsonReserve.room_cod,
-          type: jsonReserve.room_type,
-          capacity: jsonReserve.room_capacity
-        });
-      }
-
-      let reserve = await Reserve.findOne({
-        room,
-        day: jsonReserve.schedule[0],
-      })
-
-      reserve = await Reserve.create({
-        user,
-        room,
-        status: "accept",
-        date: newDate
-      })
-
-      if (reserve) {
-        room.reserves.push(reserve);
-        newDate.reserve = reserve;
-        await newDate.save();
-        await room.save();
-      }
-
-    })
-
-    res.status(200).json({
-      success: true,
-      message: "The reserves from csv has been formated to json and saved.",
-    })
-
-  } catch (error) {
-    console.log(error);
-    res.status(400).json({
-      success: false,
-      message: error.message,
-    })
-  }
 })
 
 router.post('/', verifyToken, async (req, res) => {
-    try{
+    try {
 
-        const roomCod = await Room.findOne({ cod: req.body.room });
-        if( !roomCod ){
+        const roomCod = await Room.findOne({
+            cod: req.body.room
+        });
+        if (!roomCod) {
             res.status(400).json({
-                sucess:false,
-                message:"Sala não encontrada"
+                sucess: false,
+                message: "Sala não encontrada"
             });
             return
         }
 
-        const userId = await User.findOne({ email:req.body.user });
-        if( !userId ){
+        const userId = await User.findOne({
+            email: req.body.user
+        });
+        if (!userId) {
             res.status(400).json({
-                sucess:false,
-                message:"Usuário não encontrado"
+                sucess: false,
+                message: "Usuário não encontrado"
             });
             return
         }
 
         var dateid = [];
-        for(i = 0; i < req.body.date.length; i++){
+        for (i = 0; i < req.body.date.length; i++) {
             dateid.push(new ObjectID());
             var newDate = new DateModel({
-                _id:dateid[i],
+                _id: dateid[i],
                 ...req.body.date[i]
             });
             await newDate.save();
         }
 
         const newReserve = new Reserve({
-            user:userId._id,
-            room:roomCod._id,
-            staus:req.body.status,
-            date:dateid
+            user: userId._id,
+            room: roomCod._id,
+            staus: req.body.status,
+            date: dateid
         });
         await newReserve.save();
         res.status(200).json({
@@ -257,12 +335,11 @@ router.post('/', verifyToken, async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(400).json({
-            sucess:false,
-            message:error.message
+            sucess: false,
+            message: error.message
         });
     }
-}
-);
+});
 
 router.put('/:_id', verifyToken, async (req, res) => {
     try {
