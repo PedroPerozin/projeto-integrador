@@ -322,6 +322,7 @@ router.post('/', verifyToken, async (req, res) => {
             user: userId._id,
             room: roomCod._id,
             staus: req.body.status,
+            justification: req.body.justification,
             date: dateid
         });
         await newReserve.save();

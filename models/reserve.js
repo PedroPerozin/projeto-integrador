@@ -32,8 +32,10 @@ const ReserveSchema = new Schema({
   date: [{
     type: Schema.Types.ObjectId,
     ref: "Date"
-  }]
-
+  }],
+  justification: {
+    type: Schema.Types.String
+  }
 });
 
 Object.assign(ReserveSchema.statics, {
