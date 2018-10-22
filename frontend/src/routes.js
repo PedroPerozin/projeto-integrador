@@ -5,6 +5,7 @@ import Cadastro from './pages/cadastro.js'
 import MainNavbar from './componentes/MainNavbar.js'
 import PaginaCalendario from './pages/paginacalendario.js'
 import { isAuthenticated } from './authToken.js'
+import LoginSA from './pages/loginsistemaacademico.js';
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={props => (
         isAuthenticated() ? (
@@ -21,6 +22,7 @@ const Routes = () => (
             <Route path="/" exact={true} component={Login} />
             <Route path="/cadastro" exact={true} component={Cadastro} />
             <Route path="/calendario" exact={true} component={PaginaCalendario} />
+            <Route path="/loginsistemaacademico" exact={true} component={LoginSA} />
         </Switch>
     </BrowserRouter>
 );
