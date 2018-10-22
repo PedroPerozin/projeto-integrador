@@ -308,6 +308,40 @@ router.post('/', verifyToken, async (req, res) => {
             return
         }
 
+        const roomReserves = await Reserve.find({ room: roomCod.id }).populate({
+            path: "date",
+            model: "Date"
+        });
+
+        conflictingDates = [];
+
+        for(i = 0;i < roomReserves.length;i++){
+            for(j = 0;j < roomReserves[i].date.length;j++){
+                for(h = 0;h < req.body.date.length;h++){
+                    if(roomReserves[i].date[j].day_begin <= new Date(req.body.date[h].day_end) && roomReserves[i].date[j].day_end >= new Date(req.body.date[h].day_begin)){
+                            if(roomReserves[i].date[j].day == req.body.date[h].day){
+                                if(roomReserves[i].date[j].hour.some( r => req.body.date[h].hour.includes(r))){
+                                    conflictingDates.push(roomReserves[i].date[j]);
+                                    break;
+                                }
+                            }
+                    }
+                }
+            }
+        }
+
+        if(conflictingDates.length){
+            res.status(400).json({
+                success: false,
+                message: "Conflito de datas",
+                data: {
+                    conflitos: conflictingDates
+                }
+            });
+            return;
+        }
+
+
         var dateid = [];
         for (i = 0; i < req.body.date.length; i++) {
             dateid.push(new ObjectID());
