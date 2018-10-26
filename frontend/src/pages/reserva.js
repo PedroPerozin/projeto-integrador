@@ -78,23 +78,29 @@ class Reserva extends Component {
                     onChange={(e) => this.setState({ room: e.target.value })} />
                 </FormGroup>
 
-                <FormGroup>
-                  <Label for="exampleDate">Data de Inicio</Label>
-                  <Input type="date"
-                    name="date"
-                    id="exampleDate"
-                    placeholder="date placeholder"
-                    onChange={(e) => this.setState({ day_begin: e.target.value })} />
-                </FormGroup>
+                <Row>
+                  <Col>
+                    <FormGroup>
+                      <Label for="exampleDate">Data de Inicio</Label>
+                      <Input type="date"
+                        name="date"
+                        id="exampleDate"
+                        placeholder="date placeholder"
+                        onChange={(e) => this.setState({ day_begin: e.target.value })} />
+                    </FormGroup>
+                  </Col>
 
-                <FormGroup>
-                  <Label for="exampleDate">Data Final</Label>
-                  <Input type="date"
-                    name="date"
-                    id="exampleDate"
-                    placeholder="date placeholder"
-                    onChange={(e) => this.setState({ day_end: e.target.value })} />
-                </FormGroup>
+                  <Col>
+                    <FormGroup>
+                      <Label for="exampleDate">Data Final</Label>
+                      <Input type="date"
+                        name="date"
+                        id="exampleDate"
+                        placeholder="date placeholder"
+                        onChange={(e) => this.setState({ day_end: e.target.value })} />
+                    </FormGroup>
+                  </Col>
+                </Row>
 
                 <FormGroup tag="fieldset">
                   <Label>Dia da Semana</Label>
