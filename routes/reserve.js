@@ -316,6 +316,9 @@ router.post('/', verifyToken, async (req, res) => {
         conflictingDates = [];
 
         for(i = 0;i < roomReserves.length;i++){
+            if(roomReserves[i].status === 'cancelada' || roomReserves[i].status === 'pendente'){
+                continue;
+            }
             for(j = 0;j < roomReserves[i].date.length;j++){
                 for(h = 0;h < req.body.date.length;h++){
                     if(roomReserves[i].date[j].day_begin <= new Date(req.body.date[h].day_end) && roomReserves[i].date[j].day_end >= new Date(req.body.date[h].day_begin)){
