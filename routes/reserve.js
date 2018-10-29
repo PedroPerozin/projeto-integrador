@@ -92,7 +92,7 @@ router.put("/cancel/:_id", verifyToken, async (req, res) => {
             })
         }
 
-        reserve.status = "canceled";
+        reserve.status = 'cancelada';
         await reserve.save();
 
         res.status(200).json({
@@ -256,7 +256,7 @@ router.post("/from-csv", async (req, res) => {
             reserve = await Reserve.create({
                 user,
                 room,
-                status: "accept",
+                status: 'aceita',
                 date: newDate
             })
 
@@ -355,7 +355,7 @@ router.post('/', verifyToken, async (req, res) => {
         const newReserve = new Reserve({
             user: userId._id,
             room: roomCod._id,
-            staus: req.body.status,
+            status: req.body.status,
             justification: req.body.justification,
             date: dateid
         });
