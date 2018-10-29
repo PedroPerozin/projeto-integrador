@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
     Container, Col, Form,
      Input,
-    Button, Row
+    Button, Row,
+Modal, ModalHeader, ModalBody, ModalFooter
 } from 'reactstrap';
 import Calendario from '../componentes/calendario.js'
 import MainNavbar from '../componentes/MainNavbar.js'
@@ -57,6 +58,7 @@ class PaginaCalendario extends Component {
 
         this.state = {
             sala:'',
+            modal: false,
         }
         this.updateEvents = this.updateEvents.bind(this)
     }
@@ -72,10 +74,14 @@ class PaginaCalendario extends Component {
             method:"GET"
         }).then((response) => response.json()).then((json) => {
             if (json.success) {
+                var color
                 reservas = json.data.reserve;
                 var reservasfinal = [];
                 console.log(reservas);
                 for(var i = 0;i < reservas.length;i++){
+                    if (reservas[i].status === "cancelada"){
+                        continue
+                    }
 
                     for(var j = 0;j < reservas[i].date.length;j++){
 
@@ -89,12 +95,19 @@ class PaginaCalendario extends Component {
                             console.log(data2);
 
 
+                            if (reservas[i].status == "pendente"){
+                                color = '#ff9900'
+                            }
+                            else{
+                                color = '#A87AD'
+                            }
                             reservasfinal.push({
                                 start:startHour[reservas[i].date[j].hour[h]],
                                 end:endHour[reservas[i].date[j].hour[h]],
                                 dow:[parseInt(reservas[i].date[j].day)-1],
                                 title:reservas[i].date[j].hour[h],
-                                ranges:[{start:data1, end:data2 }]
+                                ranges:[{start:data1, end:data2 }],
+                                color:color
                             });
 
                         }
@@ -170,6 +183,18 @@ class PaginaCalendario extends Component {
                         <Col>
                             <Button color="primary" onClick={this.updateEvents}>OK</Button>
                         </Col>
+                        <Button color="info" onClick={() => {this.setState({modal: !this.state.modal})}}>Cores</Button>
+                        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                            <ModalHeader toggle={this.toggle}>Cor das reservas</ModalHeader>
+                            <ModalBody>
+                                Reservas na cor azul: Reservas confirmadas, não podem ser feitas reservas nesse horário.
+                                <br/>
+                                Reservas na cor laranja: Reservas que ainda dependem da decisão do administrador, podem ser feitas reservas no mesmo horário, mas o administrador terá que escolher uma.
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="primary" onClick={() => {this.setState({modal: !this.state.modal})}}>Ok</Button>{' '}
+                            </ModalFooter>
+                        </Modal>
                     </Row>
                     <Row>
                         <Col>
