@@ -54,9 +54,6 @@ class Reserva extends Component {
     });
   }
 
-
-
-
   render() {
     return (
 
