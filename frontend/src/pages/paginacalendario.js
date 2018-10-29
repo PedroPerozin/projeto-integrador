@@ -95,7 +95,7 @@ class PaginaCalendario extends Component {
                             console.log(data2);
 
 
-                            if (reservas[i].status == "pendente"){
+                            if (reservas[i].status === "pendente"){
                                 color = '#ff9900'
                             }
                             else{
