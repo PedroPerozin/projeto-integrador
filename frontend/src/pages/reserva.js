@@ -74,7 +74,7 @@ class Reserva extends Component {
                   <Input type="text"
                     name="sala"
                     id="sala"
-                    placeholder="Digite uma sala"
+                    placeholder="Ex: e007"
                     onChange={(e) => this.setState({ room: e.target.value })} />
                 </FormGroup>
 
@@ -102,253 +102,71 @@ class Reserva extends Component {
                   </Col>
                 </Row>
 
-                <FormGroup tag="fieldset">
-                  <Label>Dia da Semana</Label>
-                  <Row>
-                    <Col>
-                      <FormGroup check>
-                        <Label check>
-                          <Input type="radio"
-                            name="radio1"
-                            onChange={(e) => this.setState({ day: "2" })}
-                          />{' '}
-                          Segunda-feira
-                        </Label>
-                      </FormGroup>
-                    </Col>
-                    <Col>
-                      <FormGroup check>
-                        <Label check>
-                          <Input type="radio"
-                            name="radio1"
-                            onChange={(e) => this.setState({ day: "3" })}
-                          />{' '}
-                          Terça-feira
-                        </Label>
-                      </FormGroup>
-                    </Col>
-                    <Col>
-                      <FormGroup check>
-                        <Label check>
-                          <Input type="radio"
-                            name="radio1"
-                            onChange={(e) => this.setState({ day: "4" })}
-                          />{' '}
-                          Quarta-feira
-                        </Label>
-                      </FormGroup>
-                    </Col>
-                    <Col>
-                      <FormGroup check>
-                        <Label check>
-                          <Input type="radio"
-                            name="radio1"
-                            onChange={(e) => this.setState({ day: "5" })}
-                          />{' '}
-                          Quinta-feira
-                        </Label>
-                      </FormGroup>
-                    </Col>
-                    <Col>
-                      <FormGroup check>
-                        <Label check>
-                          <Input type="radio"
-                            name="radio1"
-                            onChange={(e) => this.setState({ day: "6" })}
-                          />{' '}
-                          Sexta-feira
-                        </Label>
-                      </FormGroup>
-                    </Col>
-                    <Col>
-                      <FormGroup check>
-                        <Label check>
-                          <Input type="radio"
-                            name="radio1"
-                            onChange={(e) => this.setState({ day: "7" })}
-                          />{' '}
-                          Sábado
-                        </Label>
-                      </FormGroup>
-                    </Col>
-                    <Col>
-                      <FormGroup check>
-                        <Label check>
-                          <Input type="radio"
-                            name="radio1"
-                            onChange={(e) => this.setState({ day: "1" })}
-                          />{' '}
-                          Domingo
-                        </Label>
-                      </FormGroup>
-                    </Col>
-                  </Row>
+                <Row>
+                  <Col>
+                    <FormGroup>
+                      <Label for="exampleSelect">Horário Inicial</Label>
+                      <Input type="select" name="select" id="exampleSelect">
+                        <option>M1 07:30</option>
+                        <option>M2 08:20</option>
+                        <option>M3 09:10</option>
+                        <option>M4 10:20</option>
+                        <option>M5 11:10</option>
+                        <option>M6 12:00</option>
+                        <option>T1 13:00</option>
+                        <option>T2 13:50</option>
+                        <option>T3 14:40</option>
+                        <option>T4 15:50</option>
+                        <option>T5 16:40</option>
+                        <option>T6 17:30</option>
+                        <option>N1 18:40</option>
+                        <option>N2 19:30</option>
+                        <option>N3 20:20</option>
+                        <option>N4 21:20</option>
+                        <option>N5 22:10</option>
+                      </Input>
+                    </FormGroup>
+                  </Col>
+                  <Col>
+                    <FormGroup>
+                      <Label for="exampleSelect">Horário Inicial</Label>
+                      <Input type="select" name="select" id="exampleSelect">
+                        <option>M1 07:30</option>
+                        <option>M2 08:20</option>
+                        <option>M3 09:10</option>
+                        <option>M4 10:20</option>
+                        <option>M5 11:10</option>
+                        <option>M6 12:00</option>
+                        <option>T1 13:00</option>
+                        <option>T2 13:50</option>
+                        <option>T3 14:40</option>
+                        <option>T4 15:50</option>
+                        <option>T5 16:40</option>
+                        <option>T6 17:30</option>
+                        <option>N1 18:40</option>
+                        <option>N2 19:30</option>
+                        <option>N3 20:20</option>
+                        <option>N4 21:20</option>
+                        <option>N5 22:10</option>
+                      </Input>
+                    </FormGroup>
+                  </Col>
+                </Row>
+
+                <FormGroup>
+                  <Label for="exampleSelect">Frequência</Label>
+                  <Input type="select" name="select" id="exampleSelect">
+                    <option>Não se repete</option>
+                    <option>Todo dia</option>
+                    <option>Semanalmente</option>
+                  </Input>
                 </FormGroup>
 
                 <FormGroup>
-                  <Label>Horário</Label>
-                  <Row>
-                    <Col>
-                      <FormGroup check>
-                        <Label check>
-                          <Input type="checkbox"
-                            name="m1"
-                            onChange={(e) => this.setState({ hour: [...this.state.hour, "m1"] })}
-                          />{' '}M1 07:30
-                          </Label>
-                      </FormGroup>
-
-                      <FormGroup check>
-                        <Label check>
-                          <Input type="checkbox"
-                            name="m2"
-                            onChange={(e) => this.setState({ hour: [...this.state.hour, "m2"] })}
-                          />{' '}M2 08:20
-                          </Label>
-                      </FormGroup>
-
-                      <FormGroup check>
-                        <Label check>
-                          <Input type="checkbox"
-                            name="m3"
-                            onChange={(e) => this.setState({ hour: [...this.state.hour, "m3"] })}
-                          />{' '}M3 09:10
-                          </Label>
-                      </FormGroup>
-
-                      <FormGroup check>
-                        <Label check>
-                          <Input type="checkbox"
-                            name="m4"
-                            onChange={(e) => this.setState({ hour: [...this.state.hour, "m4"] })}
-                          />{' '}M4 10:20
-                          </Label>
-                      </FormGroup>
-
-                      <FormGroup check>
-                        <Label check>
-                          <Input type="checkbox"
-                            name="m5"
-                            onChange={(e) => this.setState({ hour: [...this.state.hour, "m5"] })}
-                          />{' '}M5 11:10
-                          </Label>
-                      </FormGroup>
-
-                      <FormGroup check>
-                        <Label check>
-                          <Input type="checkbox"
-                            name="m6"
-                            onChange={(e) => this.setState({ hour: [...this.state.hour, "m6"] })}
-                          />{' '}M6 12:00
-                          </Label>
-                      </FormGroup>
-                    </Col>
-
-                    <Col>
-                      <FormGroup check>
-                        <Label check>
-                          <Input type="checkbox"
-                            name="t1"
-                            onChange={(e) => this.setState({ hour: [...this.state.hour, "t1"] })}
-                          />{' '}T1 13:00
-                          </Label>
-                      </FormGroup>
-
-                      <FormGroup check>
-                        <Label check>
-                          <Input type="checkbox"
-                            name="t2"
-                            onChange={(e) => this.setState({ hour: [...this.state.hour, "t2"] })}
-                          />{' '}T2 13:50
-                          </Label>
-                      </FormGroup>
-
-                      <FormGroup check>
-                        <Label check>
-                          <Input type="checkbox"
-                            name="t3"
-                            onChange={(e) => this.setState({ hour: [...this.state.hour, "t3"] })}
-                          />{' '}T3 14:40
-                          </Label>
-                      </FormGroup>
-
-                      <FormGroup check>
-                        <Label check>
-                          <Input type="checkbox"
-                            name="t4"
-                            onChange={(e) => this.setState({ hour: [...this.state.hour, "t4"] })}
-                          />{' '}T4 15:50
-                          </Label>
-                      </FormGroup>
-
-                      <FormGroup check>
-                        <Label check>
-                          <Input type="checkbox"
-                            name="t5"
-                            onChange={(e) => this.setState({ hour: [...this.state.hour, "t5"] })}
-                          />{' '}T5 16:40
-                          </Label>
-                      </FormGroup>
-
-                      <FormGroup check>
-                        <Label check>
-                          <Input type="checkbox"
-                            name="t6"
-                            onChange={(e) => this.setState({ hour: [...this.state.hour, "t6"] })}
-                          />{' '}T6 17:30
-                          </Label>
-                      </FormGroup>
-                    </Col>
-
-                    <Col>
-                      <FormGroup check>
-                        <Label check>
-                          <Input type="checkbox"
-                            name="n1"
-                            onChange={(e) => this.setState({ hour: [...this.state.hour, "n1"] })}
-                          />{' '}N1 18:40
-                          </Label>
-                      </FormGroup>
-
-                      <FormGroup check>
-                        <Label check>
-                          <Input type="checkbox"
-                            name="n2"
-                            onChange={(e) => this.setState({ hour: [...this.state.hour, "n2"] })}
-                          />{' '}N2 19:30
-                          </Label>
-                      </FormGroup>
-
-                      <FormGroup check>
-                        <Label check>
-                          <Input type="checkbox"
-                            name="n3"
-                            onChange={(e) => this.setState({ hour: [...this.state.hour, "n3"] })}
-                          />{' '}N3 20:20
-                          </Label>
-                      </FormGroup>
-
-                      <FormGroup check>
-                        <Label check>
-                          <Input type="checkbox"
-                            name="n4"
-                            onChange={(e) => this.setState({ hour: [...this.state.hour, "n4"] })}
-                          />{' '}N4 21:20
-                          </Label>
-                      </FormGroup>
-
-                      <FormGroup check>
-                        <Label check>
-                          <Input type="checkbox"
-                            name="n5"
-                            onChange={(e) => this.setState({ hour: [...this.state.hour, "n5"] })}
-                          />{' '}N5 22:10
-                          </Label>
-                      </FormGroup>
-                    </Col>
-                  </Row>
-
+                  <Label for="exampleText">Justificativa</Label>
+                  <Input type="textarea" name="text" id="exampleText" />
                 </FormGroup>
+
                 <Button color="primary"
                   onClick={this.handleSubmit}
                 >Solicitar Reserva</Button>
