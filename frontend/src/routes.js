@@ -4,6 +4,8 @@ import Login from './pages/login.js'
 import Cadastro from './pages/cadastro.js'
 import MainNavbar from './componentes/MainNavbar.js'
 import PaginaCalendario from './pages/paginacalendario.js'
+import PainelADM from './pages/paineldoadm'
+
 import { isAuthenticated } from './authToken.js'
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={props => (
@@ -21,6 +23,7 @@ const Routes = () => (
             <Route path="/" exact={true} component={Login} />
             <Route path="/cadastro" exact={true} component={Cadastro} />
             <Route path="/calendario" exact={true} component={PaginaCalendario} />
+            <Route path="/paineldoadm" exact={true} component={PainelADM} />
         </Switch>
     </BrowserRouter>
 );
