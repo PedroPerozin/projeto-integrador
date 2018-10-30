@@ -34,8 +34,8 @@ export default class Login extends Component {
 
             })
         }).then((response) => response.json()).then((json) => {
-            console.log(json.data.token)
             if (json.success) {
+                console.log(json.data.token)
                 localStorage.setItem("token", json.data.token);
                 axios.defaults.headers = {
                     "Authorization": localStorage.getItem("token")
