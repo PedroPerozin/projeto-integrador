@@ -126,7 +126,7 @@ class MainNavbar extends Component {
                 
                         <Nav className="mr-auto">
                             <NavItem className="center">
-                                <NavLink href="" className="text-light"><b>Painel do administrador</b></NavLink>
+                                <NavLink href="/paineldoadm" className="text-light"><b>Painel do administrador</b></NavLink>
                             </NavItem>
                         </Nav>
 
