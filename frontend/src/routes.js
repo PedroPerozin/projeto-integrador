@@ -7,6 +7,7 @@ import PaginaCalendario from './pages/paginacalendario.js'
 import PainelADM from './pages/paineldoadm'
 
 import { isAuthenticated } from './authToken.js'
+
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={props => (
         isAuthenticated() ? (

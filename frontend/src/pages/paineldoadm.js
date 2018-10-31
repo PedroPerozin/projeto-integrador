@@ -13,6 +13,7 @@ import MainNavbar from '../componentes/MainNavbar.js'
 import ImportarCSV from '../componentes/importarcsv.js';
 import ListagemReserva from '../componentes/listagemdereserva';
 import GerenciamentoEquipamentos from '../componentes/gerenciarequipamentos';
+import LoginSA from '../componentes/loginsistemaacademico';
 
 export default class PainelADM extends Component {
 
@@ -92,7 +93,7 @@ export default class PainelADM extends Component {
                         </TabPane>
 
                         <TabPane tabId="4">
-                            Componente pagina autenticação do sistema academico
+                            <LoginSA />
                         </TabPane>
                     </TabContent>
                 </Container>
