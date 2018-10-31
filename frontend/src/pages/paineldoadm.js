@@ -50,14 +50,14 @@ export default class PainelADM extends Component {
                         <NavItem>
                             <NavLink className={classnames({ active: this.state.activeTab === '1' })}
                                 onClick={() => { this.toggle('1'); }}
-                            >Importar CSV
+                            >Listagem de Reservas
                         </NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink
                                 className={classnames({ active: this.state.activeTab === '2' })}
                                 onClick={() => { this.toggle('2'); }}>
-                                Listagem de Reservas
+                                Importar CSV
                         </NavLink>
                         </NavItem>
 
@@ -68,18 +68,31 @@ export default class PainelADM extends Component {
                                 Gerenciamento de Equipamentos
                         </NavLink>
                         </NavItem>
+
+                        <NavItem>
+                            <NavLink
+                                className={classnames({ active: this.state.activeTab === '4' })}
+                                onClick={() => { this.toggle('4'); }}>
+                                Autenticação sistema academico
+                        </NavLink>
+                        </NavItem>
                     </Nav>
                     <br />
                     <TabContent activeTab={this.state.activeTab}>
-                        <TabPane tabId="1">
+                    <TabPane tabId="1">
+                            <ListagemReserva />
+                        </TabPane>
+                        
+                        <TabPane tabId="2">
                             <ImportarCSV />
                         </TabPane>
-                        <TabPane tabId="2">
-                            <ListagemReserva />
-
-                        </TabPane>
+                       
                         <TabPane tabId="3">
                             <GerenciamentoEquipamentos />
+                        </TabPane>
+
+                        <TabPane tabId="4">
+                            Componente pagina autenticação do sistema academico
                         </TabPane>
                     </TabContent>
                 </Container>
