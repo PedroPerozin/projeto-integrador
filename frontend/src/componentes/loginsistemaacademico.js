@@ -58,7 +58,7 @@ export default class LoginSA extends Component {
                             <Input type="password" name="password" id="Password" placeholder="password" onChange = {(e) => {this.setState({password: e.target.value})}}/>
                         </FormGroup>
 
-                        <Button color="primary">Logar</Button>
+                        <Button color="primary">Importar</Button>
                     </Form>
                 </Container>
 

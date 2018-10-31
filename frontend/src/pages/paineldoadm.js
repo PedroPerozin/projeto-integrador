@@ -20,7 +20,8 @@ export default class PainelADM extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            file: null
+            file: null,
+            activeTab: '1'
         }
         this.toggle = this.toggle.bind(this);
     }
@@ -54,11 +55,12 @@ export default class PainelADM extends Component {
                             >Listagem de Reservas
                         </NavLink>
                         </NavItem>
+
                         <NavItem>
-                            <NavLink
+                        <NavLink
                                 className={classnames({ active: this.state.activeTab === '2' })}
                                 onClick={() => { this.toggle('2'); }}>
-                                Importar CSV
+                                Gerenciamento de Equipamentos
                         </NavLink>
                         </NavItem>
 
@@ -66,7 +68,7 @@ export default class PainelADM extends Component {
                             <NavLink
                                 className={classnames({ active: this.state.activeTab === '3' })}
                                 onClick={() => { this.toggle('3'); }}>
-                                Gerenciamento de Equipamentos
+                                Importar do CSV
                         </NavLink>
                         </NavItem>
 
@@ -74,7 +76,7 @@ export default class PainelADM extends Component {
                             <NavLink
                                 className={classnames({ active: this.state.activeTab === '4' })}
                                 onClick={() => { this.toggle('4'); }}>
-                                Autenticação sistema academico
+                                Importar do sistema acadêmico
                         </NavLink>
                         </NavItem>
                     </Nav>
@@ -85,13 +87,13 @@ export default class PainelADM extends Component {
                         </TabPane>
                         
                         <TabPane tabId="2">
-                            <ImportarCSV />
-                        </TabPane>
-                       
-                        <TabPane tabId="3">
                             <GerenciamentoEquipamentos />
                         </TabPane>
 
+                        <TabPane tabId="3">
+                            <ImportarCSV />
+                        </TabPane>
+                       
                         <TabPane tabId="4">
                             <LoginSA />
                         </TabPane>
