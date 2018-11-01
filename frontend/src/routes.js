@@ -6,14 +6,14 @@ import MainNavbar from './componentes/MainNavbar.js'
 import PaginaCalendario from './pages/paginacalendario.js'
 import PainelADM from './pages/paineldoadm'
 
-import { isAuthenticated } from './authToken.js'
+import { isAuthenticated, isAdmin } from './authToken.js'
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRouteAdmin = ({ component: Component, ...rest }) => (
     <Route {...rest} render={props => (
-        isAuthenticated() ? (
+        isAdmin() ? (
             <Component {...props} />
         ) : (
-                <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+                <Redirect to={{ pathname: '/calendario', state: { from: props.location } }} />
             )
     )} />
 )
@@ -24,7 +24,7 @@ const Routes = () => (
             <Route path="/" exact={true} component={Login} />
             <Route path="/cadastro" exact={true} component={Cadastro} />
             <Route path="/calendario" exact={true} component={PaginaCalendario} />
-            <Route path="/paineldoadm" exact={true} component={PainelADM} />
+            <PrivateRouteAdmin path="/paineldoadm" exact={true} component={PainelADM} />
         </Switch>
     </BrowserRouter>
 );
