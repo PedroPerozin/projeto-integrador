@@ -18,10 +18,20 @@ const PrivateRouteAdmin = ({ component: Component, ...rest }) => (
     )} />
 )
 
+const AlreadyLog = ({ component: Component, ...rest }) => (
+    <Route {...rest} render={props => (
+        !isAuthenticated() ? (
+            <Component {...props} />
+        ) : (
+                <Redirect to={{ pathname: '/calendario', state: { from: props.location } }} />
+            )
+    )} />
+)
+
 const Routes = () => (
     <BrowserRouter>
         <Switch>
-            <Route path="/" exact={true} component={Login} />
+            <AlreadyLog path="/" exact={true} component={Login} />
             <Route path="/cadastro" exact={true} component={Cadastro} />
             <Route path="/calendario" exact={true} component={PaginaCalendario} />
             <PrivateRouteAdmin path="/paineldoadm" exact={true} component={PainelADM} />
