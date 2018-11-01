@@ -4,6 +4,8 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import MainNavbar from '../componentes/MainNavbar.js'
 
+var horarios = ['m1','m2','m3','m4','m5','m6','t1','t2','t3','t4','t5','t6','n1','n2','n3','n4','n5']
+
 class Reserva extends Component {
 
 
@@ -14,7 +16,8 @@ class Reserva extends Component {
       room: '',
       day_end: '',
       day_begin: '',
-      hour: [],
+      hourb: 'm1',
+      houre: 'm1',
       day: ''
     };
 
@@ -23,6 +26,18 @@ class Reserva extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    var hourlist = [];
+    var between = false;
+    var i;
+    for(i = 0;i < horarios.length; i++){
+      if(horarios[i] === this.state.hourb.toLowerCase())
+        between = true;
+      if(between == true)
+        hourlist.push(horarios[i])
+      if(horarios[i] === this.state.houre.toLowerCase())
+        break;
+    }
+    console.log(hourlist);
     fetch("http://localhost:3001/api/reserves/", {
       method: "POST",
       headers: {
@@ -32,7 +47,7 @@ class Reserva extends Component {
       body: JSON.stringify({
         "user": "vitor@vitor.com",
         "room": (this.state.room).toUpperCase(),
-        "status": "pending",
+        "status": "pendente",
         "date": [{
           "day_begin": this.state.day_begin,
           "day_end": this.state.day_end,
@@ -63,7 +78,7 @@ class Reserva extends Component {
         <Container>
           <Row>
             <Col sm="12" md={{ size: 11, offset: 1 }}>
-              <Form>
+                <Form onSubmit={this.handleSubmit}>
                 <h1 className="h3 mb-3 font-weight-normal">Reserva</h1>
 
                 <FormGroup>
@@ -103,7 +118,7 @@ class Reserva extends Component {
                   <Col>
                     <FormGroup>
                       <Label for="exampleSelect">Horário Inicial</Label>
-                      <Input type="select" name="select" id="exampleSelect">
+                      <Input type="select" name="select" id="exampleSelect" onChange={(e) => {this.setState({hourb:e.target.value.substring(0,2)})}}>
                         <option>M1 07:30</option>
                         <option>M2 08:20</option>
                         <option>M3 09:10</option>
@@ -127,7 +142,7 @@ class Reserva extends Component {
                   <Col>
                     <FormGroup>
                       <Label for="exampleSelect">Horário Inicial</Label>
-                      <Input type="select" name="select" id="exampleSelect">
+                      <Input type="select" name="select" id="exampleSelect" onChange={(e) => {this.setState({houre:e.target.value.substring(0,2)})}}>
                         <option>M1 07:30</option>
                         <option>M2 08:20</option>
                         <option>M3 09:10</option>
@@ -165,7 +180,6 @@ class Reserva extends Component {
                 </FormGroup>
 
                 <Button color="primary"
-                  onClick={this.handleSubmit}
                 >Solicitar Reserva</Button>
               </Form>
 
