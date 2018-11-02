@@ -3,6 +3,7 @@ import { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import MainNavbar from '../componentes/MainNavbar.js'
+import moment from 'moment'
 
 var horarios = ['m1','m2','m3','m4','m5','m6','t1','t2','t3','t4','t5','t6','n1','n2','n3','n4','n5']
 
@@ -18,7 +19,9 @@ class Reserva extends Component {
       day_begin: '',
       hourb: 'm1',
       houre: 'm1',
-      day: ''
+      day: '',
+      freq: 'Não se repete',
+      justificativa: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -37,7 +40,22 @@ class Reserva extends Component {
       if(horarios[i] === this.state.houre.toLowerCase())
         break;
     }
+    console.log(moment(this.state.day_begin).day()+1)
     console.log(hourlist);
+    if(this.state.freq === 'Não se repete'){
+      var reserve = {
+        "user":"nome@email.com",
+        "room":this.state.room.toUpperCase(),
+        "status": "pendente",
+          date:[{
+        "day_begin": this.state.day_begin,
+        "day_end": this.state.day_begin,
+        "day": moment(this.state.day_begin).day()+1,
+        "hour" : hourlist
+        }]
+      }
+    }
+    console.log(reserve);
     fetch("http://localhost:3001/api/reserves/", {
       method: "POST",
       headers: {
@@ -45,15 +63,7 @@ class Reserva extends Component {
         "x-access-token": localStorage.getItem("token")
       },
       body: JSON.stringify({
-        "user": "vitor@vitor.com",
-        "room": (this.state.room).toUpperCase(),
-        "status": "pendente",
-        "date": [{
-          "day_begin": this.state.day_begin,
-          "day_end": this.state.day_end,
-          "day": this.state.day,
-          "hour": this.state.hour
-        }]
+          ...reserve
 
       })
     }).then((response) => response.json()).then((json) => {
@@ -62,7 +72,8 @@ class Reserva extends Component {
 
       }
       else {
-        alert("Não foi possível realizar o pedido de reserva");
+          alert("Não foi possível realizar o pedido de reserva");
+          console.log(json.message);
       }
     }).catch(error => {
       alert("Não foi possível conectar com o servidor. Tente novamente mais tarde");
@@ -167,7 +178,7 @@ class Reserva extends Component {
 
                 <FormGroup>
                   <Label for="exampleSelect">Frequência</Label>
-                  <Input type="select" name="select" id="exampleSelect">
+                  <Input type="select" name="select" id="exampleSelect" onChange={(e) => {this.setState({ frequencia:e.target.value })}}>
                     <option>Não se repete</option>
                     <option>Todo dia</option>
                     <option>Semanalmente</option>
@@ -176,7 +187,7 @@ class Reserva extends Component {
 
                 <FormGroup>
                   <Label for="exampleText">Justificativa</Label>
-                  <Input type="textarea" name="text" id="exampleText" />
+                  <Input type="textarea" name="text" id="exampleText" onChange={(e) => {this.setState({ justificativa:e.target.value })}}/>
                 </FormGroup>
 
                 <Button color="primary"
