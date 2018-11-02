@@ -105,6 +105,8 @@ class Reserva extends Component {
                 <Form onSubmit={this.handleSubmit}>
                 <h1 className="h3 mb-3 font-weight-normal">Reserva</h1>
 
+                <Row>
+                    <Col xs="auto">
                 <FormGroup>
                   <Label for="exampleAddress">Sala</Label>
                   <Input type="text"
@@ -113,9 +115,11 @@ class Reserva extends Component {
                     placeholder="Ex: e007"
                     onChange={(e) => this.setState({ room: e.target.value })} />
                 </FormGroup>
+                </Col>
+                </Row>
 
                 <Row>
-                  <Col>
+                  <Col xs="auto">
                     <FormGroup>
                       <Label for="exampleDate">Data de Inicio</Label>
                       <Input type="date"
@@ -126,20 +130,28 @@ class Reserva extends Component {
                     </FormGroup>
                   </Col>
 
-                  <Col>
+                  <Col xs="auto">
                     <FormGroup>
                       <Label for="exampleDate">Data Final</Label>
                       <Input type="date"
                         name="date"
                         id="exampleDate"
                         placeholder="date placeholder"
+                        disabled={this.state.frequencia === 'Não se repete'}
                         onChange={(e) => this.setState({ day_end: e.target.value })} />
                     </FormGroup>
                   </Col>
-                </Row>
-
-                <Row>
-                  <Col>
+                  <Col xs="auto">
+                <FormGroup>
+                  <Label for="exampleSelect">Frequência</Label>
+                  <Input type="select" name="select" id="exampleSelect" onChange={(e) => {this.setState({ frequencia:e.target.value });console.log(e.target.value);}}>
+                    <option>Não se repete</option>
+                    <option>Todo dia</option>
+                    <option>Semanalmente</option>
+                  </Input>
+                </FormGroup>
+            </Col>
+                  <Col xs="auto">
                     <FormGroup>
                       <Label for="exampleSelect">Horário Inicial</Label>
                       <Input type="select" name="select" id="exampleSelect" onChange={(e) => {this.setState({hourb:e.target.value.substring(0,2)})}}>
@@ -163,9 +175,9 @@ class Reserva extends Component {
                       </Input>
                     </FormGroup>
                   </Col>
-                  <Col>
+                  <Col xs="auto">
                     <FormGroup>
-                      <Label for="exampleSelect">Horário Inicial</Label>
+                      <Label for="exampleSelect">Horário Final (incluso)</Label>
                       <Input type="select" name="select" id="exampleSelect" onChange={(e) => {this.setState({houre:e.target.value.substring(0,2)})}}>
                         <option>M1 07:30</option>
                         <option>M2 08:20</option>
@@ -189,19 +201,14 @@ class Reserva extends Component {
                   </Col>
                 </Row>
 
-                <FormGroup>
-                  <Label for="exampleSelect">Frequência</Label>
-                  <Input type="select" name="select" id="exampleSelect" onChange={(e) => {this.setState({ frequencia:e.target.value });console.log(e.target.value);}}>
-                    <option>Não se repete</option>
-                    <option>Todo dia</option>
-                    <option>Semanalmente</option>
-                  </Input>
-                </FormGroup>
-
-                <FormGroup>
-                  <Label for="exampleText">Justificativa</Label>
-                  <Input type="textarea" name="text" id="exampleText" onChange={(e) => {this.setState({ justificativa:e.target.value })}}/>
-                </FormGroup>
+                <Row>
+                  <Col>
+                    <FormGroup>
+                      <Label for="exampleText">Justificativa</Label>
+                      <Input type="textarea" name="text" id="exampleText" onChange={(e) => {this.setState({ justificativa:e.target.value })}}/>
+                    </FormGroup>
+                  </Col>
+                </Row>
 
                 <Button color="primary"
                 >Solicitar Reserva</Button>
