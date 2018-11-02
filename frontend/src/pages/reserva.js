@@ -20,7 +20,7 @@ class Reserva extends Component {
       hourb: 'm1',
       houre: 'm1',
       day: '',
-      freq: 'Não se repete',
+      frequencia: 'Não se repete',
       justificativa: ''
     };
 
@@ -40,10 +40,9 @@ class Reserva extends Component {
       if(horarios[i] === this.state.houre.toLowerCase())
         break;
     }
-    console.log(moment(this.state.day_begin).day()+1)
-    console.log(hourlist);
-    if(this.state.freq === 'Não se repete'){
-      var reserve = {
+    var reserve;
+    if(this.state.frequencia === 'Não se repete'){
+      reserve = {
         "user":"nome@email.com",
         "room":this.state.room.toUpperCase(),
         "status": "pendente",
@@ -55,6 +54,20 @@ class Reserva extends Component {
         }]
       }
     }
+    else if(this.state.frequencia === 'Semanalmente'){
+      reserve = {
+        "user":"nome@email.com",
+        "room":this.state.room.toUpperCase(),
+        "status": "pendente",
+          date:[{
+        "day_begin": this.state.day_begin,
+        "day_end": this.state.day_end,
+        "day": moment(this.state.day_begin).day()+1,
+        "hour" : hourlist
+        }]
+      }
+    }
+        
     console.log(reserve);
     fetch("http://localhost:3001/api/reserves/", {
       method: "POST",
@@ -178,7 +191,7 @@ class Reserva extends Component {
 
                 <FormGroup>
                   <Label for="exampleSelect">Frequência</Label>
-                  <Input type="select" name="select" id="exampleSelect" onChange={(e) => {this.setState({ frequencia:e.target.value })}}>
+                  <Input type="select" name="select" id="exampleSelect" onChange={(e) => {this.setState({ frequencia:e.target.value });console.log(e.target.value);}}>
                     <option>Não se repete</option>
                     <option>Todo dia</option>
                     <option>Semanalmente</option>
