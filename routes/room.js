@@ -4,9 +4,6 @@ const Room = require("../models/room");
 const verifyToken = require("../auth/auth").verifyToken;
 const csv = require("csvtojson");
 
-
-
-
 router.get("/", async (req, res) => {
   try {
     const rooms = await Room.find();
@@ -73,7 +70,7 @@ router.post("/from-csv", async (req, res) => {
   }
 })
 
-router.get('/:_id', verifyToken, async (req, res) => {
+router.get('/:_id', async (req, res) => {
   try {
     const room = await Room.findById(req.params._id);
     if (room) {

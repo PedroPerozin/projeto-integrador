@@ -2,10 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const status = Object.freeze({
-  Pendding: 'pendding',
-  Accept: 'accept',
-  Canceled: 'canceled',
-  Finalized: 'finalized'
+  Pendente: 'pendente',
+  Aceita: 'aceita',
+  Cancelada: 'cancelada'
 })
 
 const ReserveSchema = new Schema({
@@ -27,17 +26,19 @@ const ReserveSchema = new Schema({
     type: Schema.Types.String,
     required: true,
     enum: Object.values(status),
-    default: status.Pendding
+    default: status.Pendente
   },
   date: [{
     type: Schema.Types.ObjectId,
     ref: "Date"
-  }]
-
+  }],
+  justification: {
+    type: Schema.Types.String
+  }
 });
 
 Object.assign(ReserveSchema.statics, {
   status
 });
 
-module.exports = mongoose.model('Reserve', ReserveSchema)
+module.exports = mongoose.model("Reserve", ReserveSchema)

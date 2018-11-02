@@ -34,13 +34,13 @@ export default class Login extends Component {
 
             })
         }).then((response) => response.json()).then((json) => {
-            console.log(json.data.token)
             if (json.success) {
+                console.log(json.data.token)
                 localStorage.setItem("token", json.data.token);
                 axios.defaults.headers = {
                     "Authorization": localStorage.getItem("token")
                 }
-
+                this.props.history.push("/calendario");
             }
             else {
                 alert("Usuário ou senha incorreto");
@@ -82,6 +82,7 @@ export default class Login extends Component {
 
                                     <Button className="btn btn-info btn-color margin-button" type="submit" color="primary" onClick={this.handleSubmit}>Entrar!</Button><br />
                                     <p>Ainda não é cadastrado? <Link to="/cadastro">Cadastre-se!</Link><br /></p>
+                                    
 
 
                                 </Form>

@@ -8,7 +8,8 @@ exports.verifyToken = async (req, res, next) => {
 
     if (token) {
       const decoded = await jwt.verify(token, config.secret);
-      req.userId = decoded.id;
+      req.decoded = decoded;
+
       next();
     } else {
       return res.status(403).send({

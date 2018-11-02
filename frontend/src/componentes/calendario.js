@@ -6,12 +6,12 @@ import 'fullcalendar/dist/locale/pt-br.js'
 
 class Calendario extends Component {
 
-    constructor(props){
-        super(props);
+    //constructor(props){
+        //super(props);
 
-        this.updateEvents = this.updateEvents.bind(this);
+        //this.updateEvents = this.updateEvents.bind(this);
 
-    }
+    //}
 
     componentDidMount() {
         $('#calendar').fullCalendar({
@@ -27,18 +27,26 @@ class Calendario extends Component {
             displayEventEnd: true,
             minTime:'07:30:00',
             timeFormat:'h:mm',
+            eventRender: function(event){
+                return (event.ranges.filter(function(range){ // test event against all the ranges
+
+                    return (event.start.isBefore(range.end) &&
+                        event.end.isAfter(range.start));
+
+                }).length)>0; //if it isn't in one of the ranges, don't render it (by returning false)
+            }
         });
-        this.updateEvents();
+        //this.updateEvents();
     }
 
-    updateEvents(){
-        $('#calendar').fullCalendar( 'removeEvents');
-        $('#calendar').fullCalendar('addEventSource', this.props.events);
-    }
+    //updateEvents(){
+    //$('#calendar').fullCalendar( 'removeEvents');
+    //$('#calendar').fullCalendar('addEventSource', this.props.events);
+    //}
 
-    componentDidUpdate(prevProps) {
-        this.updateEvents();
-    } 
+    //componentDidUpdate(prevProps) {
+    //this.updateEvents();
+    //} 
 
 
     render(){
