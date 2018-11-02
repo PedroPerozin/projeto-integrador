@@ -9,7 +9,6 @@ var horarios = ['m1','m2','m3','m4','m5','m6','t1','t2','t3','t4','t5','t6','n1'
 
 class Reserva extends Component {
 
-
   constructor(props) {
     super(props);
 
@@ -40,32 +39,49 @@ class Reserva extends Component {
       if(horarios[i] === this.state.houre.toLowerCase())
         break;
     }
-    var reserve;
-    if(this.state.frequencia === 'Não se repete'){
-      reserve = {
+      var reserve = {
         "user":"nome@email.com",
         "room":this.state.room.toUpperCase(),
         "status": "pendente",
-          date:[{
+    };
+    if(this.state.frequencia === 'Não se repete'){
+      reserve.date = [{
         "day_begin": this.state.day_begin,
         "day_end": this.state.day_begin,
         "day": moment(this.state.day_begin).day()+1,
         "hour" : hourlist
         }]
-      }
+      
     }
     else if(this.state.frequencia === 'Semanalmente'){
-      reserve = {
-        "user":"nome@email.com",
-        "room":this.state.room.toUpperCase(),
-        "status": "pendente",
-          date:[{
+      reserve.date = [{
         "day_begin": this.state.day_begin,
         "day_end": this.state.day_end,
         "day": moment(this.state.day_begin).day()+1,
         "hour" : hourlist
         }]
-      }
+    }
+    else if(this.state.frequencia === 'Todo dia'){
+        let d = new Date(this.state.day_begin);
+        let d2 = new Date(this.state.day_end);
+        var days = [];
+        for(i = 0;i < 7 && d <= d2; i++){
+            days.push(d.getDay()+2);
+            d.setDate(d.getDate()+1);
+        }
+        var dates = []
+        for(i = 0;i < days.length;i++){
+            if(days[i] == 8){
+                days[i] = 1;
+            }
+            dates.push({
+                'day_begin':this.state.day_begin,
+                'day_end':this.state.day_end,
+                'day':days[i],
+                'hour':hourlist
+            });
+        }
+        reserve.date = dates;
     }
         
     console.log(reserve);
