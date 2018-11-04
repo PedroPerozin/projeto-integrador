@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink, } from 'reactstrap';
 import { isAuthenticated, isAdmin } from '../authToken.js'
-
+import './style.css';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
@@ -30,7 +30,7 @@ class MainNavbar extends Component {
         if (isAuthenticated() && isAdmin() == false) {
             return (
                 <div className="App">
-                    <Navbar color="secondary">
+                    <Navbar className="styleNav">
 
                         <Nav className="mr-auto">
                             <NavbarBrand href="/" className="text-light"><b>UTFPR Reservas</b></NavbarBrand>
@@ -70,7 +70,7 @@ class MainNavbar extends Component {
         if (isAuthenticated() == false) {
             return (
                 <div className="App">
-                    <Navbar color="secondary">
+                    <Navbar className="styleNav">
 
                         <Nav className="mr-auto">
                             <NavbarBrand href="/" className="text-light"><b>UTFPR Reservas</b></NavbarBrand>
@@ -91,15 +91,13 @@ class MainNavbar extends Component {
                             </NavItem>
                         </Nav>
                     </Navbar>
-
-
                 </div>
             );
         }
         if (isAuthenticated() && isAdmin() == true) {
             return (
                 <div className="App">
-                    <Navbar color="secondary">
+                    <Navbar className="styleNav">
 
                         <Nav className="mr-auto">
                             <NavbarBrand href="/" className="text-light"><b>UTFPR Reservas</b></NavbarBrand>

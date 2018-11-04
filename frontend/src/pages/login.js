@@ -52,13 +52,8 @@ export default class Login extends Component {
 
     }
 
-
-
-
-
     render() {
         return (
-            
             <div className="body">
                 <Container>
                     <Row>
@@ -83,9 +78,6 @@ export default class Login extends Component {
 
                                     <Button className="btn btn-color margin-button" type="submit" color="primary" onClick={this.handleSubmit}>Entrar</Button><br />
                                     <p className="info">Ainda não é cadastrado? <Link to="/cadastro">Cadastre-se!</Link><br /></p>
-                                    
-
-
                                 </Form>
                             </div>
                         </Col>
