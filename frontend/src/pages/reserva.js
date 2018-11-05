@@ -64,6 +64,10 @@ class Reserva extends Component {
       if(horarios[i] === this.state.houre.toLowerCase())
         break;
     }
+    if(this.state.day_begin === ''){
+        alert("Escolha uma data de inicio");
+        return;
+    }
     if(hourlist.length == 0){
         alert("Horário de inicio maior que horário de fim");
         return;
@@ -91,6 +95,10 @@ class Reserva extends Component {
       
     }
     else if(this.state.frequencia === 'Semanalmente'){
+      if(this.state.day_end === ''){
+          alert("Selecione uma data de fim");
+          return;
+      }
       reserve.date = [{
         "day_begin": this.state.day_begin,
         "day_end": this.state.day_end,
@@ -99,6 +107,10 @@ class Reserva extends Component {
         }]
     }
     else if(this.state.frequencia === 'Todo dia'){
+      if(this.state.day_end === ''){
+          alert("Selecione uma data de fim");
+          return;
+      }
         let d = new Date(this.state.day_begin);
         let d2 = new Date(this.state.day_end);
         var days = [];
@@ -138,7 +150,7 @@ class Reserva extends Component {
 
       }
       else {
-          alert("Não foi possível realizar o pedido de reserva");
+          alert("Não foi possível realizar o pedido de reserva, motivo:\n" + json.message);
           console.log(json.message);
       }
     }).catch(error => {
