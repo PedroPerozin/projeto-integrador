@@ -5,6 +5,7 @@ import Cadastro from './pages/cadastro.js'
 import MainNavbar from './componentes/MainNavbar.js'
 import PaginaCalendario from './pages/paginacalendario.js'
 import PainelADM from './pages/paineldoadm'
+import Listagem from './pages/listagem.js'
 
 import { isAuthenticated, isAdmin } from './authToken.js'
 
@@ -35,6 +36,7 @@ const Routes = () => (
             <Route path="/cadastro" exact={true} component={Cadastro} />
             <Route path="/calendario" exact={true} component={PaginaCalendario} />
             <PrivateRouteAdmin path="/paineldoadm" exact={true} component={PainelADM} />
+            <Route path="/listagem" exact={true} component={Listagem} />
         </Switch>
     </BrowserRouter>
 );
