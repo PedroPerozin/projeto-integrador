@@ -68,12 +68,12 @@ class Reserva extends Component {
         alert("Horário de inicio maior que horário de fim");
         return;
     }
-    if(new Date(this.state.day_begin) > new Date(this.state.day_end)){
-        alert("Data de inicio maior que data de fim");
-        return;
-    }
     if(this.state.justificativa === ""){
         alert("Justificativa em branco");
+        return;
+    }
+    if(this.state.frequencia !== 'Não se repete' && new Date(this.state.day_begin) > new Date(this.state.day_end)){
+        alert("Data de inicio maior que data de fim");
         return;
     }
     var reserve = {
