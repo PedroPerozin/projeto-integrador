@@ -13,6 +13,7 @@ class Reserva extends Component {
     super(props);
 
     this.state = {
+      salas: '',
       room: '',
       day_end: '',
       day_begin: '',
@@ -24,6 +25,30 @@ class Reserva extends Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  componentWillMount(){
+    fetch("http://localhost:3001/api/rooms", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    }).then((response) => response.json()).then((json) => {
+      if (json.success) {
+        var salas = [""];
+        for(var i = 0;i < json.data.rooms.length;i++){
+            salas.push(<option>{json.data.rooms[i].cod}</option>)
+        }
+        this.setState({salas:salas});
+
+      }
+      else {
+          alert("Não foi possível obter as salas");
+      }
+    }).catch(error => {
+      alert("Não foi possível conectar com o servidor para obter as salas. Tente novamente mais tarde");
+    });
+    
   }
 
   handleSubmit(e) {
@@ -125,11 +150,9 @@ class Reserva extends Component {
                     <Col xs="auto">
                 <FormGroup>
                   <Label for="exampleAddress">Sala</Label>
-                  <Input type="text"
-                    name="sala"
-                    id="sala"
-                    placeholder="Ex: e007"
-                    onChange={(e) => this.setState({ room: e.target.value })} />
+                  <Input type="select" name="select" id="exampleSelect" onChange={(e) => {this.setState({ room:e.target.value })}}>
+                      {this.state.salas}
+                  </Input>
                 </FormGroup>
                 </Col>
                 </Row>
