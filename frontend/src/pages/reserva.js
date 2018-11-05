@@ -35,7 +35,7 @@ class Reserva extends Component {
       }
     }).then((response) => response.json()).then((json) => {
       if (json.success) {
-        var salas = [""];
+          var salas = [<option> </option>];
         for(var i = 0;i < json.data.rooms.length;i++){
             salas.push(<option>{json.data.rooms[i].cod}</option>)
         }
@@ -64,7 +64,19 @@ class Reserva extends Component {
       if(horarios[i] === this.state.houre.toLowerCase())
         break;
     }
-      var reserve = {
+    if(hourlist.length == 0){
+        alert("Horário de inicio maior que horário de fim");
+        return;
+    }
+    if(new Date(this.state.day_begin) > new Date(this.state.day_end)){
+        alert("Data de inicio maior que data de fim");
+        return;
+    }
+    if(this.state.justificativa === ""){
+        alert("Justificativa em branco");
+        return;
+    }
+    var reserve = {
         "user":"nome@email.com",
         "room":this.state.room.toUpperCase(),
         "status": "pendente",
