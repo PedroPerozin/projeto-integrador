@@ -18,18 +18,33 @@ class Listagem extends Component {
             		<ListGroup>
 
 				    	<ListGroupItem>
-				    		<h4>Allison Sampaio</h4>
 				    		<Row>
 				    			<Col>
-				    				<p>Data: 05/11/2019</p>
+						    		Sala: F101<br/>
+						    		<p>Status: Aceita</p>
+					    		</Col>
+					    		<Col sm="12" md={{ size: 3, offset: 6 }}>
+					    			<Button color="success">Aceitar</Button>{' '}
+				    				<Button color="danger">Rejeitar</Button>{' '}
+					    		</Col>
+				    		</Row>
+				    		<Row>
+				    			<Col xs="auto">
+				    				Data: 05/11/2019<br/>
+				    				Data: 05/11/2019<br/>
+				    				Data: 05/11/2019<br/>
+				    				Data: 05/11/2019<br/>
+				    				Data: 05/11/2019<br/>
 				    			</Col>
-				    			<Col>
-				    				<p>Horário: N1-N3</p>
+				    			<Col xs="auto">
+				    				Horário: N1-N3<br/>
+				    				Horário: N1-N3<br/>
+				    				Horário: N1-N3<br/>
+				    				Horário: N1-N3<br/>
+				    				Horário: N1-N3<br/>
 				    			</Col>
 				    		</Row>
-				    		<p>Justificativa: Aula de Redes 2</p>
-				    		<Button color="success">Aceitar</Button>{' '}
-				    		<Button color="danger">Rejeitar</Button>{' '}
+				    		<br/><p>Justificativa<br/>Aula de Redes 2</p>
 				    	</ListGroupItem>
 				    	
 			     	</ListGroup>
