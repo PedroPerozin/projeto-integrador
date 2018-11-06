@@ -25,6 +25,7 @@ class Listagem extends Component {
                     "x-access-token": localStorage.getItem('token')
                 },
             }).then((response) => response.json()).then((json) => {
+                console.log(json)
                 if (json.success) {
                 	var listReserve = [];
 
