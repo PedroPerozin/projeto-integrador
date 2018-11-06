@@ -8,6 +8,7 @@ Modal, ModalHeader, ModalBody, ModalFooter
 import Calendario from '../componentes/calendario.js'
 import MainNavbar from '../componentes/MainNavbar.js'
 import $ from 'jquery';
+import {getItem, getId, isAdmin, getEmail} from '../authToken'
 
 
 var startHour = {
@@ -120,12 +121,13 @@ class PaginaCalendario extends Component {
             }
             else {
                 alert(json.message);
-                console.log(json);
+                console.log(json)
             }
         }).catch( error => {
             alert("Não foi possível conectar com o servidor. Tente novamente mais tarde");
         });
 
+       
 
         //this.setState({events: [
         //{
@@ -163,6 +165,7 @@ class PaginaCalendario extends Component {
         //] });
 
     } 
+   
 
     render() {
         return (
@@ -177,6 +180,7 @@ class PaginaCalendario extends Component {
                                     onChange={(e) => this.setState({sala: e.target.value})}
                                     placeholder="Sala (ex:e007 ou E007)"
                                     onSubmit={this.updateEvents}
+                                    
                                 />
                             </Form>
                         </Col>
