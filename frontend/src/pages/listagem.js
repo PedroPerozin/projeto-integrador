@@ -16,14 +16,24 @@ class Listagem extends Component {
 
             	<Container>
             		<ListGroup>
-				    	<ListGroupItem>Cras justo odio</ListGroupItem>
-				    	<ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-				    	<ListGroupItem>Morbi leo risus</ListGroupItem>
-				    	<ListGroupItem>Porta ac consectetur ac</ListGroupItem>
-				    	<ListGroupItem>Vestibulum at eros</ListGroupItem>
+
+				    	<ListGroupItem>
+				    		<h4>Allison Sampaio</h4>
+				    		<Row>
+				    			<Col>
+				    				<p>Data: 05/11/2019</p>
+				    			</Col>
+				    			<Col>
+				    				<p>Horário: N1-N3</p>
+				    			</Col>
+				    		</Row>
+				    		<p>Justificativa: Aula de Redes 2</p>
+				    		<Button color="success">Aceitar</Button>{' '}
+				    		<Button color="danger">Rejeitar</Button>{' '}
+				    	</ListGroupItem>
+				    	
 			     	</ListGroup>
             	</Container>
-            	
             </div>
         );
     }
