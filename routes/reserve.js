@@ -190,8 +190,6 @@ router.get('/roomname/:_roomname', async (req, res) => {
 });
 
 router.post("/from-csv", async (req, res) => {
-    console.log(req.body)
-    console.log(req.file)
     try {
         const csvFilePath = req.body.path;
 
