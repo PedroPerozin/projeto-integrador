@@ -26,6 +26,10 @@ class Listagem extends Component {
     genDatas(d){
         var day_begin = new Date(d.day_begin);
         var day_end = new Date(d.day_end);
+        console.log(day_begin);
+        console.log(day_begin.getUTCDate());
+        //day_begin.setDate(day_begin.getDate()+1);
+        //day_end.setDate(day_begin.getDate()+1);
 
         var datas = [];
         var key = 0;
@@ -34,7 +38,7 @@ class Listagem extends Component {
                 <div key={key}>
                     <Row>
                         <Col xs="2">
-                            {(day_begin.getDate()+1).toString()+ '/' + (day_begin.getMonth()+1).toString() + '/' +  day_begin.getFullYear().toString()}
+                            {(day_begin.getUTCDate())+ '/' + (day_begin.getUTCMonth()) + '/' +  day_begin.getFullYear()}
                         </Col>
                         <Col>
                             {d.hour[0]} - {d.hour[d.hour.length -1]}
@@ -50,6 +54,7 @@ class Listagem extends Component {
 
     getDatas(date){
         var datas = []
+        console.log(date);
         if(date){
             return date.map( d => (
                 <div key={d._id}>
