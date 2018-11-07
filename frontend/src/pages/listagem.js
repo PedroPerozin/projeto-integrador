@@ -8,76 +8,131 @@ import MainNavbar from '../componentes/MainNavbar.js'
 
 class Listagem extends Component {
 
-	constructor(props) {
+    constructor(props) {
         super(props);
 
         this.state = {
-            listaReserva: ''
+            listaReserva: 'Carregando reservas...'
         };
+
+        this.getDatas = this.getDatas.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
+    handleClick(e){
+        alert("cancelar: " + e.target.id); 
+    }
 
-	componentWillMount(){
-		fetch("http://localhost:3001/api/reserves/from-user/?status=all", {
-                method:"GET",
-                headers: {
-                    "Content-Type":"application/json",
-                    "x-access-token": localStorage.getItem('token')
-                },
-            }).then((response) => response.json()).then((json) => {
-                console.log(json)
-                if (json.success) {
-                	var listReserve = [];
+    genDatas(d){
+        var day_begin = new Date(d.day_begin);
+        var day_end = new Date(d.day_end);
 
-                	for(var i=0; i<json.data.reserves.length;i++){
-                		listReserve.push(
-                			<ListGroupItem>
-					    		<Row>
-					    			<Col>
-							    		Sala: {json.data.reserves[i].room.cod}<br/>
-							    		<p>Status: {json.data.reserves[i].status}</p>
-						    		</Col>
-						    		<Col sm="12" md={{ size: 3, offset: 6 }}>
-						    			<Button color="success">Aceitar</Button>{' '}
-					    				<Button color="danger">Rejeitar</Button>{' '}
-						    		</Col>
-					    		</Row>
-					    		<Row>
-					    			<Col xs="auto">
-					    				Data: 05/11/2019<br/>
-					    			</Col>
-					    			<Col xs="auto">
-					    				Horário: N1-N3<br/>
-					    			</Col>
-					    		</Row>
-					    		<br/><p>Justificativa<br/>{json.data.reserves[i].justification}</p>
-					    	</ListGroupItem>
-                		)
-                	}
+        var datas = [];
+        var key = 0;
+        while(day_begin <= day_end){
+            datas.push(
+                <div key={key}>
+                    <Row>
+                        <Col xs="2">
+                            {(day_begin.getDate()+1).toString()+ '/' + (day_begin.getMonth()+1).toString() + '/' +  day_begin.getFullYear().toString()}
+                        </Col>
+                        <Col>
+                            {d.hour[0]} - {d.hour[d.hour.length -1]}
+                        </Col>
+                    </Row>
+                </div>
+            );
+            day_begin.setDate(day_begin.getDate()+7);
+            key++;
+        }
+        return datas;
+    }
 
-                	this.setState({listaReserva:listReserve});
+    getDatas(date){
+        var datas = []
+        if(date){
+            return date.map( d => (
+                <div key={d._id}>
+                    <Row>
+                        <Col>
+                            {this.genDatas(d)}
+                        </Col>
+                    </Row>
+                    <Row>
+                    </Row>
+                </div>
+            )
+            )
+        }
+    }
 
+    componentWillMount(){
+        console.log(localStorage.getItem('token'));
+        fetch("http://localhost:3001/api/reserves/from-user/?status=all", {
+            method:"GET",
+            headers: {
+                "Content-Type":"application/json",
+                "x-access-token": localStorage.getItem('token')
+            },
+        }).then((response) => response.json()).then((json) => {
+            if (json.success) {
+                console.log("a");
+                var listReserve = [];
+                var a = [];
+
+                for(var i = 0;i < json.data.reserves.length;i++){
+                    a.push(json.data.reserves.pop());
                 }
-                else {
-                }
-            }).catch( error => {
-                alert("Não foi possível conectar com o servidor. Tente novamente mais tarde");
-            });
-	}
+
+                listReserve = a.map( r => (
+                    <ListGroupItem key={r._id}>
+                        <Row>
+                            <Col xs = "auto">
+                                Sala: {r.room.cod}<br/>
+                            </Col>
+                            <Col>
+                                Status: {r.status}
+                            </Col>
+                            <Button id={r._id} onClick={this.handleClick} disabled={r.status === 'cancelada'} color="danger">Cancelar</Button>
+                        </Row>
+                        <Row>
+                            <Col xs="2">
+                                Data(s):
+                            </Col>
+                            <Col>
+                                Horário:
+                            </Col>
+                        </Row>
+                        {this.getDatas(r.date)}
+                        <br/><p>Justificativa:<br/>{r.justification}</p>
+                    </ListGroupItem>
+                ));
+
+                this.setState({listaReserva:listReserve});
+
+            }
+            else {
+                this.setState({listaReserva:'Não foi possível obter suas reservas'});
+            }
+        }).catch( error => {
+            this.setState({listaReserva:'Falha na conexão com o servidor.'});
+            alert("Não foi possível conectar com o servidor. Tente novamente mais tarde");
+        });
+    }
 
     render() {
         return(
             <div>
-            	<MainNavbar/>
-            	<br/>
+                <MainNavbar/>
+                <br/>
+                <Container>
+                    <h1>Minhas Reservas</h1>
+                    <ListGroup>
 
-            	<Container>
-            		<ListGroup>
+                        {this.state.listaReserva}
 
-				    	{this.state.listaReserva}
-				    	
-			     	</ListGroup>
-            	</Container>
+                    </ListGroup>
+                </Container>
             </div>
         );
     }

@@ -49,17 +49,23 @@ router.get("/from-user", verifyToken, async (req, res) => {
             reserves = await Reserve.find({
                 user: req.decoded.user._id
             }).populate({
-            path: "room",
-            model: "Room"
-        });
+                path: "room",
+                model: "Room"
+            }).populate({
+                path: "date",
+                model: "Date"
+            });
         } else {
             reserves = await Reserve.find({
                 user: req.decoded.user._id,
                 status: req.query.status
             }).populate({
-            path: "room",
-            model: "Room"
-        });
+                path: "room",
+                model: "Room"
+            }).populate({
+                path: "date",
+                model: "Date"
+            });
         }
 
         if (!reserves) {
@@ -328,12 +334,12 @@ router.post('/', verifyToken, async (req, res) => {
             for(j = 0;j < roomReserves[i].date.length;j++){
                 for(h = 0;h < req.body.date.length;h++){
                     if(roomReserves[i].date[j].day_begin <= new Date(req.body.date[h].day_end) && roomReserves[i].date[j].day_end >= new Date(req.body.date[h].day_begin)){
-                            if(roomReserves[i].date[j].day == req.body.date[h].day){
-                                if(roomReserves[i].date[j].hour.some( r => req.body.date[h].hour.includes(r))){
-                                    conflictingDates.push(roomReserves[i].date[j]);
-                                    break;
-                                }
+                        if(roomReserves[i].date[j].day == req.body.date[h].day){
+                            if(roomReserves[i].date[j].hour.some( r => req.body.date[h].hour.includes(r))){
+                                conflictingDates.push(roomReserves[i].date[j]);
+                                break;
                             }
+                        }
                     }
                 }
             }
