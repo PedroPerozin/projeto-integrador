@@ -114,8 +114,10 @@ class Reserva extends Component {
         let d = new Date(this.state.day_begin);
         let d2 = new Date(this.state.day_end);
         var days = [];
+        var daybegins = [];
         for(i = 0;i < 7 && d <= d2; i++){
             days.push(d.getDay()+2);
+            daybegins.push(d.getFullYear() + '-' + (d.getMonth()+1) + '-' + (d.getDate()+1))
             d.setDate(d.getDate()+1);
         }
         var dates = []
