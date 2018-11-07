@@ -38,7 +38,7 @@ class Listagem extends Component {
                 <div key={key}>
                     <Row>
                         <Col xs="2">
-                            {(day_begin.getUTCDate())+ '/' + (day_begin.getUTCMonth()) + '/' +  day_begin.getFullYear()}
+                            {(day_begin.getUTCDate())+ '/' + (day_begin.getMonth()+1) + '/' +  day_begin.getFullYear()}
                         </Col>
                         <Col>
                             {d.hour[0]} - {d.hour[d.hour.length -1]}
