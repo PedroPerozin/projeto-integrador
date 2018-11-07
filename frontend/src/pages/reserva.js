@@ -126,7 +126,7 @@ class Reserva extends Component {
                 days[i] = 1;
             }
             dates.push({
-                'day_begin':this.state.day_begin,
+                'day_begin':daybegins[i],
                 'day_end':this.state.day_end,
                 'day':days[i],
                 'hour':hourlist
