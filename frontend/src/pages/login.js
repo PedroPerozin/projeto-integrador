@@ -52,20 +52,16 @@ export default class Login extends Component {
 
     }
 
-
-
-
-
     render() {
         return (
-            
-            <div>
+            <div className="body">
                 <Container>
                     <Row>
                         <Col sm="12" md={{ size: 4, offset: 4 }}>
-                            <div className="text-center body">
+                            <div className="text-center body1">
                                 <Form className="form-signin form">
-                                    <h1 className="h3 mb-3 font-weight-normal">Bem-vindo!</h1>
+                                    <h1 className="logo"></h1>
+                                    <h1 className="title">Bem-vindo!</h1>
 
                                     <Input
                                         type="email"
@@ -80,11 +76,8 @@ export default class Login extends Component {
                                         required
                                         placeholder="Digite sua senha" />
 
-                                    <Button className="btn btn-info btn-color margin-button" type="submit" color="primary" onClick={this.handleSubmit}>Entrar!</Button><br />
-                                    <p>Ainda não é cadastrado? <Link to="/cadastro">Cadastre-se!</Link><br /></p>
-                                    
-
-
+                                    <Button className="btn btn-color margin-button" type="submit" color="primary" onClick={this.handleSubmit}>Entrar</Button><br />
+                                    <p className="info">Ainda não é cadastrado? <Link to="/cadastro">Cadastre-se!</Link><br /></p>
                                 </Form>
                             </div>
                         </Col>
