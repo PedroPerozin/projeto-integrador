@@ -4,6 +4,7 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import MainNavbar from '../componentes/MainNavbar.js'
 import moment from 'moment'
+import { getEmail } from '../authToken.js'
 
 var horarios = ['m1','m2','m3','m4','m5','m6','t1','t2','t3','t4','t5','t6','n1','n2','n3','n4','n5']
 
@@ -81,7 +82,7 @@ class Reserva extends Component {
         return;
     }
     var reserve = {
-        "user":"nome@email.com",
+        "user": getEmail(),
         "room":this.state.room.toUpperCase(),
         "status": "pendente",
     };
