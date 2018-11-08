@@ -45,7 +45,7 @@ class MainNavbar extends Component {
 
                         <Nav className="mr-auto">
                             <NavItem className="center">
-                              <NavLink href="/reserva" className="text-light"><b>Criar Reserva</b></NavLink
+                              <NavLink href="/reserva" className="text-light"><b>Criar Reserva</b></NavLink>
                             </NavItem>
                         </Nav>
 
