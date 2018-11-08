@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const status = Object.freeze({
   Pendente: 'pendente',
   Aceita: 'aceita',
-  Cancelada: 'cancelada'
+  Cancelada: 'cancelada',
+  Rejeitada: 'rejeitada'
 })
 
 const ReserveSchema = new Schema({

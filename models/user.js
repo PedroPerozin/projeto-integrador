@@ -19,7 +19,11 @@ const UserSchema = new Schema({
     type: Schema.Types.Boolean,
     required: true,
     default: false
-  }
+  },
+  reserves: [{
+    type: Schema.Types.ObjectId,
+    ref: "Reserve"
+  }]
 });
 
 module.exports = mongoose.model('User', UserSchema);

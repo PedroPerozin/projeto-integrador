@@ -5,6 +5,12 @@ const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
 const config = require("../config/database");
 
+const verifyToken = require("../auth/auth").verifyToken;
+
+const nodemailer = require('nodemailer');
+const configNodemailer = require("../config/nodemailer")
+const transporter = nodemailer.createTransport(configNodemailer);
+
 
 router.get('/', async (req, res) => {
   try {
@@ -175,6 +181,32 @@ router.delete("/:_id", async (req, res) => {
     });
   }
 });
+
+router.post("/send-email", verifyToken, async (req, res) => {
+  try {
+
+    const mailOptions = {
+      from: configNodemailer.auth.user, // sender address
+      to: req.body.email, // list of receivers
+      subject: 'Serviço de reservas de salas UTFPR.', // Subject line
+      html: req.body.message // plain text body
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    res.status(200).json({
+      success: true,
+      message: "the email has been sended"
+    })
+
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+      error
+    })
+  }
+})
 
 
 module.exports = router;
