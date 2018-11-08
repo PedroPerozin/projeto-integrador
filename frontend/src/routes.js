@@ -6,6 +6,7 @@ import MainNavbar from './componentes/MainNavbar.js'
 import PaginaCalendario from './pages/paginacalendario.js'
 import Reserva from './pages/reserva.js'
 import PainelADM from './pages/paineldoadm'
+import Listagem from './pages/listagem.js'
 
 import { isAuthenticated, isAdmin } from './authToken.js'
 
@@ -37,6 +38,7 @@ const Routes = () => (
             <Route path="/calendario" exact={true} component={PaginaCalendario} />
             <Route path="/reserva" exact={true} component={Reserva} />
             <PrivateRouteAdmin path="/paineldoadm" exact={true} component={PainelADM} />
+            <Route path="/listagem" exact={true} component={Listagem} />
         </Switch>
     </BrowserRouter>
 );

@@ -49,11 +49,23 @@ router.get("/from-user", verifyToken, async (req, res) => {
         if (req.query.status == "all") {
             reserves = await Reserve.find({
                 user: req.decoded.user._id
+            }).populate({
+                path: "room",
+                model: "Room"
+            }).populate({
+                path: "date",
+                model: "Date"
             });
         } else {
             reserves = await Reserve.find({
                 user: req.decoded.user._id,
                 status: req.query.status
+            }).populate({
+                path: "room",
+                model: "Room"
+            }).populate({
+                path: "date",
+                model: "Date"
             });
         }
 
