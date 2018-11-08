@@ -85,6 +85,7 @@ class Reserva extends Component {
         "user": getEmail(),
         "room":this.state.room.toUpperCase(),
         "status": "pendente",
+        "justification":this.state.justificativa
     };
     if(this.state.frequencia === 'Não se repete'){
       reserve.date = [{
