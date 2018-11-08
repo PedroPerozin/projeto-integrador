@@ -41,6 +41,13 @@ class MainNavbar extends Component {
                                 <NavLink href="/listagem" className="text-light"><b>Minhas Reservas</b></NavLink>
                             </NavItem>
                         </Nav>
+              
+
+                        <Nav className="mr-auto">
+                            <NavItem className="center">
+                              <NavLink href="/reserva" className="text-light"><b>Criar Reserva</b></NavLink
+                            </NavItem>
+                        </Nav>
 
 
                         <Nav className="mr-auto">
@@ -108,6 +115,12 @@ class MainNavbar extends Component {
                         <Nav className="mr-auto">
                             <NavItem className="center">
                                 <NavLink href="/listagem" className="text-light"><b>Minhas Reservas</b></NavLink>
+                            </NavItem>
+                        </Nav>
+
+                        <Nav className="mr-auto">
+                            <NavItem className="center">
+                                <NavLink href="/reserva" className="text-light"><b>Criar Reserva</b></NavLink>
                             </NavItem>
                         </Nav>
 

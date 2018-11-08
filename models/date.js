@@ -22,13 +22,14 @@ const schedule = Object.freeze({
 })
 
 const days = Object.freeze({
-  Segunda: '1',
-  Terça: '2',
-  Quarta: '3',
-  Quinta: '4',
-  Sexta: '5',
-  Sábado: '6',
-  Domingo: '7',
+  Domingo: '1',
+  Segunda: '2',
+  Terça: '3',
+  Quarta: '4',
+  Quinta: '5',
+  Sexta: '6',
+  Sábado: '7'
+  
 })
 
 const DateSchema = new Schema({

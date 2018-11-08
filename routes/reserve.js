@@ -8,6 +8,7 @@ var ObjectID = require('mongodb').ObjectID;
 const csv = require("csvtojson");
 const DateModel = require("../models/date");
 
+
 router.get("/", async (req, res) => {
     try {
         const reserves = await Reserve.find().populate({
@@ -91,6 +92,49 @@ router.get("/from-user", verifyToken, async (req, res) => {
     }
 })
 
+router.get("/filter/:status", verifyToken, async (req, res) => {
+    try {
+
+        const reserves = await Reserve.find({
+            status: req.params.status
+        }).populate({
+            path: "room",
+            model: "Room"
+        }).populate({
+            path: "equipments",
+            model: "Equipment"
+        }).populate({
+            path: "date",
+            model: "Date"
+        }).populate({
+            path: "user",
+            model: "User"
+        });
+
+        if (!reserves) {
+            res.status(404).json({
+                success: false,
+                message: "Reserves not found."
+            })
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Reserves has found.",
+            data: {
+                reserves
+            }
+        })
+
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            message: error.message,
+            error
+        })
+    }
+})
+
 
 router.put("/cancel/:_id", verifyToken, async (req, res) => {
     try {
@@ -134,8 +178,14 @@ router.get('/:_id', async (req, res) => {
         }).populate({
             path: "date",
             model: "Date"
-        });
+        }).populate({
+            path: "user",
+            model: "User"
+        })
+
         if (reserve) {
+
+
             res.status(200).json({
                 success: true,
                 data: {
@@ -275,8 +325,10 @@ router.post("/from-csv", async (req, res) => {
             if (reserve) {
                 room.reserves.push(reserve);
                 newDate.reserve = reserve;
+                user.reserves.push(reserve);
                 await newDate.save();
                 await room.save();
+                await user.save();
             }
 
         })
@@ -309,10 +361,11 @@ router.post('/', verifyToken, async (req, res) => {
             return
         }
 
-        const userId = await User.findOne({
+        const user = await User.findOne({
             email: req.body.user
         });
-        if (!userId) {
+
+        if (!user) {
             res.status(400).json({
                 sucess: false,
                 message: "Usuário não encontrado"
@@ -320,24 +373,28 @@ router.post('/', verifyToken, async (req, res) => {
             return
         }
 
-        const roomReserves = await Reserve.find({ room: roomCod.id }).populate({
+        const roomReserves = await Reserve.find({
+            room: roomCod.id
+        }).populate({
             path: "date",
             model: "Date"
         });
 
         conflictingDates = [];
 
-        for(i = 0;i < roomReserves.length;i++){
-            if(roomReserves[i].status === 'cancelada' || roomReserves[i].status === 'pendente'){
-                continue;
-            }
-            for(j = 0;j < roomReserves[i].date.length;j++){
-                for(h = 0;h < req.body.date.length;h++){
-                    if(roomReserves[i].date[j].day_begin <= new Date(req.body.date[h].day_end) && roomReserves[i].date[j].day_end >= new Date(req.body.date[h].day_begin)){
-                        if(roomReserves[i].date[j].day == req.body.date[h].day){
-                            if(roomReserves[i].date[j].hour.some( r => req.body.date[h].hour.includes(r))){
-                                conflictingDates.push(roomReserves[i].date[j]);
-                                break;
+        if (roomReserves) {
+            for (i = 0; i < roomReserves.length; i++) {
+                if (roomReserves[i].status === 'cancelada' || roomReserves[i].status === 'pendente') {
+                    continue;
+                }
+                for (j = 0; j < roomReserves[i].date.length; j++) {
+                    for (h = 0; h < req.body.date.length; h++) {
+                        if (roomReserves[i].date[j].day_begin <= new Date(req.body.date[h].day_end) && roomReserves[i].date[j].day_end >= new Date(req.body.date[h].day_begin)) {
+                            if (roomReserves[i].date[j].day == req.body.date[h].day) {
+                                if (roomReserves[i].date[j].hour.some(r => req.body.date[h].hour.includes(r))) {
+                                    conflictingDates.push(roomReserves[i].date[j]);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -345,7 +402,7 @@ router.post('/', verifyToken, async (req, res) => {
             }
         }
 
-        if(conflictingDates.length){
+        if (conflictingDates.length) {
             res.status(400).json({
                 success: false,
                 message: "Conflito de datas",
@@ -368,13 +425,15 @@ router.post('/', verifyToken, async (req, res) => {
         }
 
         const newReserve = new Reserve({
-            user: userId._id,
+            user: user._id,
             room: roomCod._id,
             status: req.body.status,
             justification: req.body.justification,
             date: dateid
         });
+        user.reserves.push(newReserve);
         await newReserve.save();
+        await user.save()
         res.status(200).json({
             success: true,
             message: "Reserve has created",
@@ -393,6 +452,7 @@ router.post('/', verifyToken, async (req, res) => {
 
 router.put('/:_id', verifyToken, async (req, res) => {
     try {
+        console.log(req.body)
         const reserve = await Reserve.findById(req.params._id).populate({
             path: "professor",
             model: "User"
@@ -402,7 +462,10 @@ router.put('/:_id', verifyToken, async (req, res) => {
         }).populate({
             path: "equipments",
             model: "Equipment"
-        });
+        }).populate({
+            path: "user",
+            model: "User"
+        })
         if (reserve) {
             await reserve.update({
                 ...req.body
@@ -455,6 +518,8 @@ router.delete("/:_id", verifyToken, async (req, res) => {
         });
     }
 });
+
+
 
 
 module.exports = router;
