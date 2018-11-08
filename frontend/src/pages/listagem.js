@@ -20,7 +20,24 @@ class Listagem extends Component {
     }
 
     handleClick(e){
-        alert("cancelar: " + e.target.id); 
+        
+        fetch("http://localhost:3001/api/reserves/cancel/" + e.target.id, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "x-access-token": localStorage.getItem("token")
+            },
+        }).then((response) => response.json()).then((json) => {
+            if (json.success) {
+                alert("Reserva cancelada com sucesso")
+                window.location.reload();
+            }
+            else {
+                alert("Reserva não encontrada");
+            }
+        }).catch(error => {
+            alert("Não foi possível conectar com o servidor. Tente novamente mais tarde");
+        }); 
     }
 
     genDatas(d){
