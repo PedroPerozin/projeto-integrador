@@ -1,9 +1,12 @@
-import React from "react";
-import { Component } from "react";
-import { ListGroup, ListGroupItem } from "reactstrap";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
-import { Container, Row, Col } from "reactstrap";
-import MainNavbar from "./MainNavbar.js";
+import React, { Component } from "react";
+import {
+  Button,
+  Container,
+  Row,
+  Col,
+  ListGroup,
+  ListGroupItem
+} from "reactstrap";
 
 class ListagemReservasPendentes extends Component {
   constructor(props) {
@@ -31,12 +34,11 @@ class ListagemReservasPendentes extends Component {
       .then(response => response.json())
       .then(json => {
         if (json.success) {
-          console.log(json.data.reserve);
           this.state.reserva = json.data.reserve;
           alert(`Reserva ${action} com sucesso`);
           // window.location.reload();
         } else {
-          alert("Reserva não encontrada");
+          // alert("Reserva não encontrada");
         }
       })
       .catch(error => {
@@ -50,7 +52,12 @@ class ListagemReservasPendentes extends Component {
         method: "POST",
         body: JSON.stringify({
           email: this.state.reserva.user.email,
-          message: `A reserva que você solicitou para ${
+          message: `Olá ${
+            this.state.reserva.user.name
+              ? this.state.reserva.user.name
+              : this.state.reserva.user.email
+          }
+          A reserva que você solicitou para ${
             this.state.reserva.date.day_begin
           } à ${this.state.reserva.date.day_end} na sala ${
             this.state.reserva.room.cod
@@ -64,7 +71,11 @@ class ListagemReservasPendentes extends Component {
         .then(response => response.json())
         .then(json => {
           if (json.success) {
-            alert(`Um email foi enviado para ${this.state.reserva.user.email}`);
+            // alert(
+            //   `O email de informação foi enviado para ${
+            //     this.state.reserva.user.email
+            //   }`
+            // );
             window.location.reload();
           } else {
             alert(
@@ -85,8 +96,8 @@ class ListagemReservasPendentes extends Component {
   genDatas(d) {
     var day_begin = new Date(d.day_begin);
     var day_end = new Date(d.day_end);
-    console.log(day_begin);
-    console.log(day_begin.getUTCDate());
+    // console.log(day_begin);
+    // console.log(day_begin.getUTCDate());
     //day_begin.setDate(day_begin.getDate()+1);
     //day_end.setDate(day_begin.getDate()+1);
 
@@ -117,7 +128,6 @@ class ListagemReservasPendentes extends Component {
 
   getDatas(date) {
     var datas = [];
-    console.log(date);
     if (date) {
       return date.map(d => (
         <div key={d._id}>
@@ -141,14 +151,12 @@ class ListagemReservasPendentes extends Component {
       .then(response => response.json())
       .then(json => {
         if (json.success) {
-          console.log("a");
           var listReserve = [];
           var a = [];
 
           for (var i = 0; i < json.data.reserves.length; i++) {
             a.push(json.data.reserves.pop());
           }
-
           listReserve = a.map(r => (
             <ListGroupItem key={r._id}>
               <Row>
@@ -156,7 +164,9 @@ class ListagemReservasPendentes extends Component {
                   Sala: {r.room.cod}
                   <br />
                 </Col>
-                <Col>Status: {r.status}</Col>
+                <Col>
+                  Solicitante: {r.user.name ? r.user.name : r.user.email}
+                </Col>
                 <Button
                   id={r._id}
                   value={"aceita"}

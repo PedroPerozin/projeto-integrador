@@ -94,7 +94,10 @@ router.get("/filter/:status", verifyToken, async (req, res) => {
         }).populate({
             path: "date",
             model: "Date"
-        })
+        }).populate({
+            path: "user",
+            model: "User"
+        });
 
         if (!reserves) {
             res.status(404).json({
