@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
 import {
-    Form, Button, Input
+    Form, Button, Input, Label, Dropdown, DropdownToggle,
+    DropdownMenu, DropdownItem, FormGroup
 } from 'reactstrap';
-
 
 import axios, { post } from 'axios';
 
@@ -12,21 +12,34 @@ class ImportarCSV extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            caminho : "",
-            variavel : ""
+            caminho: "",
+            variavel: "",
+            dropdownOpen: false,
+            show: false
         }
-
+        this.toggle = this.toggle.bind(this);
         this.onSubmit = this.onSubmit.bind(this)
         this.onChange = this.onChange.bind(this)
+        this.showModal = this.showModal.bind(this)
     }
+    toggle() {
+        this.setState(prevState => ({
+            dropdownOpen: !prevState.dropdownOpen
+        }));
+    }
+    showModal() {
+        this.setState({ show: true });
+    };
+
+
 
     onSubmit(e, url) {
         e.preventDefault();
 
-        if(this.state.variavel == 0){
+        if (this.state.variavel == 0) {
             url = "http://localhost:3001/api/reserves/from-csv"
         }
-        else{
+        else {
             url = "http://localhost:3001/api/rooms/from-csv"
         }
         fetch(url, {
@@ -36,7 +49,7 @@ class ImportarCSV extends Component {
             },
             body: JSON.stringify({
                 "path": this.state.caminho
-                
+
 
             })
         }).then((response) => response.json()).then((json) => {
@@ -44,6 +57,8 @@ class ImportarCSV extends Component {
                 alert("Operação realizada com sucesso.");
             }
             else {
+                //console.log(this.state.variavel)
+                //console.log(url)
                 alert("A operação falhou.");
             }
         }).catch(error => {
@@ -54,30 +69,34 @@ class ImportarCSV extends Component {
         this.setState({ file: e.target.files[0] })
 
     }
+
+    showAba(e) {
+        if (e.target.value == "CSV das Salas") {
+            this.state.variavel = 1;
+        } else if (e.target.value == "CSV dos Horarios") {
+            this.state.variavel = 0;
+        }
+    }
+
     render() {
         return (
             <div>
 
-
-                Importar CSV das horarios
                 <Form onSubmit={this.onSubmit}>
-                    <Input caminho="caminho" placeholder="escreva o caminho para o arquivo "
-                        onChange={(e) => this.setState({ caminho: e.target.value, variavel : 0 })}
-                    />
+                    <FormGroup>
+                        <Label for="exampleSelect">Escolha uma opção</Label>
+                        <Input type="select" name="select" id="exampleSelect" onChange={(e) => { this.showAba(e) }}>
+                            <option id="horarios" >CSV dos Horarios</option>
+                            <option id="salas"  >CSV das Salas</option>
+                        </Input>
+                    </FormGroup>
+                    <Input caminho="caminho" placeholder="escreva o caminho para o arquivo " />
+                    <br />
                     <Button type="submit">Enviar</Button>
-                </Form>
-                <br />
-                <br />
-                Importar CSV das salas
-                <Form onSubmit={this.onSubmit} >
-                    <Input caminho="caminho" placeholder="escreva o caminho para o arquivo "
-                        onChange={(e) => this.setState({ caminho: e.target.value, variavel : 1 })}
-                    />
-                    <Button type="submit">Enviar</Button>
+                    <br />
                 </Form>
             </div>
-        )
+        );
     }
 }
-
 export default ImportarCSV;
