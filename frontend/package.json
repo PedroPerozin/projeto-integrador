@@ -16,7 +16,7 @@
     "react-dom": "^16.4.2",
     "react-icons": "^3.0.5",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.5",
+    "react-scripts": "^2.1.1",
     "reactstrap": "^6.4.0"
   },
   "scripts": {
@@ -27,5 +27,11 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

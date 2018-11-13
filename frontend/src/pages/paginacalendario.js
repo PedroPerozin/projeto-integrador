@@ -8,6 +8,7 @@ Modal, ModalHeader, ModalBody, ModalFooter
 import Calendario from '../componentes/calendario.js'
 import MainNavbar from '../componentes/MainNavbar.js'
 import $ from 'jquery';
+import './style.css';
 
 
 var startHour = {
@@ -181,20 +182,11 @@ class PaginaCalendario extends Component {
                             </Form>
                         </Col>
                         <Col>
-                            <Button color="primary" onClick={this.updateEvents}>OK</Button>
+                            <p className="legenda">Azul: Reservas confirmadas, não podem ser feitas reservas nesse horário.</p>
                         </Col>
-                        <Button color="info" onClick={() => {this.setState({modal: !this.state.modal})}}>Cores</Button>
-                        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                            <ModalHeader toggle={this.toggle}>Cor das reservas</ModalHeader>
-                            <ModalBody>
-                                Reservas na cor azul: Reservas confirmadas, não podem ser feitas reservas nesse horário.
-                                <br/>
-                                Reservas na cor laranja: Reservas que ainda dependem da decisão do administrador, podem ser feitas reservas no mesmo horário, mas o administrador terá que escolher uma.
-                            </ModalBody>
-                            <ModalFooter>
-                                <Button color="primary" onClick={() => {this.setState({modal: !this.state.modal})}}>Ok</Button>{' '}
-                            </ModalFooter>
-                        </Modal>
+                        <Col>
+                            <p className="legenda">Laranja: Reservas pendentes, podem ser feitas reservas no mesmo horário.</p>
+                        </Col>
                     </Row>
                     <Row>
                         <Col>
