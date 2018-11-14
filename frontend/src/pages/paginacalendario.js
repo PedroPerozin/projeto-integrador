@@ -182,10 +182,15 @@ class PaginaCalendario extends Component {
                             </Form>
                         </Col>
                         <Col>
-                            <p className="legenda">Azul: Reservas confirmadas, não podem ser feitas reservas nesse horário.</p>
+                            <Button color="primary" onClick={this.updateEvents}>OK</Button>
                         </Col>
+                            <div className="box-blue"></div>
                         <Col>
-                            <p className="legenda">Laranja: Reservas pendentes, podem ser feitas reservas no mesmo horário.</p>
+                            <p className="legenda">Reservas confirmadas, não podem ser feitas reservas nesse horário.</p>
+                        </Col>
+                            <div className="box-orange"></div>
+                        <Col>
+                            <p className="legenda">Reservas pendentes, podem ser feitas reservas nesse horário.</p>
                         </Col>
                     </Row>
                     <Row>

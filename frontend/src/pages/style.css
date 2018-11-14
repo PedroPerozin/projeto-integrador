@@ -1,11 +1,19 @@
 .legenda{
-	font-size: 14px;
+	font-size: 13px;
 }
 
 .box-blue{
-	color: #3A87AD;
+	height:14px;
+	border: 14px solid;
+	border-color: #3A87AD;
+	border-radius: 4px;
+	margin-top: 10px;
 }
 
 .box-orange{
-	color: #FB9700;
+	height:14px;
+	border: 14px solid;
+	border-color: #FF9900;
+	border-radius: 4px;
+	margin-top: 10px;
 }
