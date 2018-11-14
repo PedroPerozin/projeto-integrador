@@ -52,13 +52,13 @@ class MainNavbar extends Component {
 
                         <Nav className="mr-auto">
                             <NavItem className="center">
-                                <NavLink href="/calendario" className="text-light"><b>Calendario</b></NavLink>
+                                <NavLink href="/calendario" className="text-light"><b>Calendário</b></NavLink>
                             </NavItem>
                         </Nav>
 
                         <Nav className="mr-auto">
                             <NavItem className="center">
-                                <NavLink href="" className="text-light"><b>Recursos e equipamentos</b></NavLink>
+                                <NavLink href="" className="text-light"><b>Recursos e Equipamentos</b></NavLink>
                             </NavItem>
                         </Nav>
 
