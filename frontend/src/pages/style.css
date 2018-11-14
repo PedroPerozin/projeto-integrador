@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
 .legenda{
 	font-size: 13px;
+	font-family: 'Ubuntu', sans-serif;
 }
 
 .box-blue{
