@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+.legenda{
+	font-size: 13px;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+.box-blue{
+	height:14px;
+	border: 14px solid;
+	border-color: #3A87AD;
+	border-radius: 4px;
+	margin-top: 10px;
+}
+
+.box-orange{
+	height:14px;
+	border: 14px solid;
+	border-color: #FF9900;
+	border-radius: 4px;
+	margin-top: 10px;
+}
