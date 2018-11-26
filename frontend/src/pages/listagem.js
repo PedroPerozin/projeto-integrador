@@ -125,7 +125,8 @@ class Listagem extends Component {
                 var listReserve = [];
                 var a = [];
 
-                for(var i = 0;i < json.data.reserves.length;i++){
+                var size = json.data.reserves.length;
+                for(var i = 0;i < size;i++){
                     a.push(json.data.reserves.pop());
                 }
 
