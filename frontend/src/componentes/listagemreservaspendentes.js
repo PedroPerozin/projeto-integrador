@@ -7,6 +7,8 @@ import {
   ListGroup,
   ListGroupItem
 } from "reactstrap";
+import Rejeitar from './rejeitar.js'
+
 
 class ListagemReservasPendentes extends Component {
   constructor(props) {
@@ -14,15 +16,28 @@ class ListagemReservasPendentes extends Component {
 
     this.state = {
       listaReserva: "Carregando reservas...",
-      reserva: null
+      reserva: null,
+      modal: false
     };
-
+    this.toggle = this.toggle.bind(this)
     this.getDatas = this.getDatas.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
+  toggle(e) {
+    this.setState({
+        modal: !this.state.modal,
+        id: e.target.id
+    });
+}
+
+justatry(e){
+  
+}
+
   async handleClick(e) {
     let action = e.target.value;
+   
     await fetch(`http://localhost:3001/api/reserves/${e.target.id}`, {
       method: "PUT",
       body: JSON.stringify({ status: action }),
@@ -179,9 +194,10 @@ class ListagemReservasPendentes extends Component {
                 <Button
                   id={r._id}
                   value={"rejeitada"}
-                  onClick={this.handleClick}
                   color="danger"
+                  onClick={this.justatry}
                 >
+                  {this.props.buttonLabel}
                   Rejeitar
                 </Button>
               </Row>
@@ -196,6 +212,7 @@ class ListagemReservasPendentes extends Component {
                 <br />
                 {r.justification}
               </p>
+              
             </ListGroupItem>
           ));
 
@@ -219,6 +236,7 @@ class ListagemReservasPendentes extends Component {
       <div>
         <Container>
           <ListGroup>{this.state.listaReserva}</ListGroup>
+          <Rejeitar modal={this.state.modal} toggle={this.toggle}  id = {this.justatry()}/>
         </Container>
       </div>
     );

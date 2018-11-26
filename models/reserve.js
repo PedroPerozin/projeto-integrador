@@ -35,7 +35,11 @@ const ReserveSchema = new Schema({
   }],
   justification: {
     type: Schema.Types.String
+  },
+  admjustification: {
+    type: Schema.Types.String
   }
+  
 });
 
 Object.assign(ReserveSchema.statics, {
