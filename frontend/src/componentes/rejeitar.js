@@ -8,10 +8,9 @@ export default class Singup extends Component {
         super(props);
 
         this.state = {
-            admjustificativa: '',
-            id: ''
+            admjustificativa: '',   
         };
-
+        this.handleClick = this.handleClick.bind(this);
     }
 
 
@@ -25,9 +24,9 @@ export default class Singup extends Component {
 
    
 
-    async handleClick() {
+     handleClick() {
        
-    
+        console.log(this.props.id)
         
       }
 
@@ -44,7 +43,7 @@ export default class Singup extends Component {
                         <FormGroup row>
                             <Label for="exampleText">Justificativa</Label>
                             <Input type="textarea"
-                                name="text"
+                                name="admjustificativa"
                                 id="exampleText"
                                 onChange={(event) => this.handleChange(event)}
                             />

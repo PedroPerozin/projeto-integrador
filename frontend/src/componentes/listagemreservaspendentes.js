@@ -17,23 +17,23 @@ class ListagemReservasPendentes extends Component {
     this.state = {
       listaReserva: "Carregando reservas...",
       reserva: null,
-      modal: false
+      modal: false,
+      _id: ''
     };
     this.toggle = this.toggle.bind(this)
     this.getDatas = this.getDatas.bind(this);
     this.handleClick = this.handleClick.bind(this);
+
   }
 
   toggle(e) {
     this.setState({
         modal: !this.state.modal,
-        id: e.target.id
+        _id: e.target.id
     });
+    
 }
 
-justatry(e){
-  
-}
 
   async handleClick(e) {
     let action = e.target.value;
@@ -195,11 +195,12 @@ justatry(e){
                   id={r._id}
                   value={"rejeitada"}
                   color="danger"
-                  onClick={this.justatry}
+                  onClick={this.toggle}
                 >
                   {this.props.buttonLabel}
                   Rejeitar
                 </Button>
+                
               </Row>
               <Row>
                 <Col xs="2">Data(s):</Col>
@@ -214,6 +215,7 @@ justatry(e){
               </p>
               
             </ListGroupItem>
+            
           ));
 
           this.setState({ listaReserva: listReserve });
@@ -236,7 +238,7 @@ justatry(e){
       <div>
         <Container>
           <ListGroup>{this.state.listaReserva}</ListGroup>
-          <Rejeitar modal={this.state.modal} toggle={this.toggle}  id = {this.justatry()}/>
+          <Rejeitar id = {this.state._id} modal={this.state.modal} toggle={this.toggle}/>
         </Container>
       </div>
     );
