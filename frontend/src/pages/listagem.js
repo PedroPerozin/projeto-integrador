@@ -22,7 +22,6 @@ class Listagem extends Component {
             }] 
         };
 
-        this.getDatas = this.getDatas.bind(this);
         this.handleClick = this.handleClick.bind(this);
     }
 

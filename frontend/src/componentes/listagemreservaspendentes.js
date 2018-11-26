@@ -28,7 +28,6 @@ class ListagemReservasPendentes extends Component {
       reserva: null
     };
 
-    this.getDatas = this.getDatas.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -109,53 +108,6 @@ class ListagemReservasPendentes extends Component {
             "Não foi possível conectar com o servidor. Tente novamente mais tarde"
           );
         });
-    }
-  }
-
-  genDatas(d) {
-    var day_begin = new Date(d.day_begin);
-    var day_end = new Date(d.day_end);
-    // console.log(day_begin);
-    // console.log(day_begin.getUTCDate());
-    //day_begin.setDate(day_begin.getDate()+1);
-    //day_end.setDate(day_begin.getDate()+1);
-
-    var datas = [];
-    var key = 0;
-    while (day_begin <= day_end) {
-      datas.push(
-        <div key={key}>
-          <Row>
-            <Col xs="2">
-              {("0" + day_begin.getUTCDate()).slice(-2) +
-                "/" +
-                ("0" + (day_begin.getUTCMonth() + 1)).slice(-2) +
-                "/" +
-                day_begin.getFullYear()}
-            </Col>
-            <Col>
-              {d.hour[0]} - {d.hour[d.hour.length - 1]}
-            </Col>
-          </Row>
-        </div>
-      );
-      day_begin.setDate(day_begin.getDate() + 7);
-      key++;
-    }
-    return datas;
-  }
-
-  getDatas(date) {
-    var datas = [];
-    if (date) {
-      return date.map(d => (
-        <div key={d._id}>
-          <Row>
-            <Col>{this.genDatas(d)}</Col>
-          </Row>
-          <Row />
-        </div>
-      ));
     }
   }
 
