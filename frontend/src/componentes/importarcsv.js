@@ -54,15 +54,9 @@ class ImportarCSV extends Component {
         }).then((response) => response.json()).then((json) => {
             if (json.success) {
                 alert("Operação realizada com sucesso.");
-                // console.log(this.state.caminho)
-                // console.log(this.state.variavel)
-                // console.log(url)
             }
             else {
                 alert("A operação falhou.");
-                // console.log(this.state.caminho)
-                // console.log(this.state.variavel)
-                // console.log(url)
             }
         }).catch(error => {
             alert("Não foi possível conectar com o servidor. Tente novamente mais tarde");
