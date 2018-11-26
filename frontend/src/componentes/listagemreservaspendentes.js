@@ -96,7 +96,6 @@ class ListagemReservasPendentes extends Component {
             //     this.state.reserva.user.email
             //   }`
             // );
-            window.location.reload();
           } else {
             alert(
               `Não foi possível enviar o email para ${

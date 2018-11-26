@@ -44,7 +44,6 @@ class Listagem extends Component {
         else{
             console.log("Não confirmado");
         }
-        return;
         
         fetch("http://localhost:3001/api/reserves/cancel/" + e.target.id, {
             method: "PUT",
@@ -55,7 +54,6 @@ class Listagem extends Component {
         }).then((response) => response.json()).then((json) => {
             if (json.success) {
                 alert("Reserva cancelada com sucesso")
-                window.location.reload();
             }
             else {
                 alert("Reserva não encontrada");
