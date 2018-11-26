@@ -21,6 +21,7 @@ class ImportarCSV extends Component {
         this.onSubmit = this.onSubmit.bind(this)
         this.onChange = this.onChange.bind(this)
         this.showModal = this.showModal.bind(this)
+        this.setCaminho = this.setCaminho.bind(this)
     }
     toggle() {
         this.setState(prevState => ({
@@ -30,9 +31,7 @@ class ImportarCSV extends Component {
     showModal() {
         this.setState({ show: true });
     };
-
-
-
+    
     onSubmit(e, url) {
         e.preventDefault();
 
@@ -55,11 +54,15 @@ class ImportarCSV extends Component {
         }).then((response) => response.json()).then((json) => {
             if (json.success) {
                 alert("Operação realizada com sucesso.");
+                console.log(this.state.caminho)
+                console.log(this.state.variavel)
+                console.log(url)
             }
             else {
-                //console.log(this.state.variavel)
-                //console.log(url)
                 alert("A operação falhou.");
+                console.log(this.state.caminho)
+                console.log(this.state.variavel)
+                console.log(url)
             }
         }).catch(error => {
             alert("Não foi possível conectar com o servidor. Tente novamente mais tarde");
@@ -69,6 +72,14 @@ class ImportarCSV extends Component {
         this.setState({ file: e.target.files[0] })
 
     }
+
+    setCaminho(e){
+        this.setState ({
+            caminho:e.target.value
+        })
+
+    }
+
 
     showAba(e) {
         if (e.target.value == "CSV das Salas") {
@@ -90,7 +101,7 @@ class ImportarCSV extends Component {
                             <option id="salas"  >CSV das Salas</option>
                         </Input>
                     </FormGroup>
-                    <Input caminho="caminho" placeholder="escreva o caminho para o arquivo " />
+                    <Input caminho="caminho" placeholder="escreva o caminho para o arquivo" onChange={(e) => {this.setCaminho(e)}}/>
                     <br />
                     <Button type="submit">Enviar</Button>
                     <br />
