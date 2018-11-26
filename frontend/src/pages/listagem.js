@@ -4,6 +4,7 @@ import { ListGroup, ListGroupItem } from 'reactstrap';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import MainNavbar from '../componentes/MainNavbar.js'
+import ItemReserva from '../componentes/itemlistareserva.js'
 
 
 class Listagem extends Component {
@@ -12,7 +13,13 @@ class Listagem extends Component {
         super(props);
 
         this.state = {
-            listaReserva: 'Carregando reservas...'
+            listaReserva:[{
+                _id:'',
+                room:{cod:''},
+                status:'',
+                date:[],
+                justification:'',
+            }] 
         };
 
         this.getDatas = this.getDatas.bind(this);
@@ -20,6 +27,24 @@ class Listagem extends Component {
     }
 
     handleClick(e){
+        var i;
+        var r = Object.assign([],this.state.listaReserva);
+        for(i = 0;i < r.length;i++)
+            if(r[i]._id === e.target.id)
+                break;
+        console.log(i);
+
+        r[i].status = 'cancelada';
+        console.log(r[i]);
+        this.setState({listaReserva:r});
+        console.log(r);
+        if (window.confirm("Você tem certeza?")){
+            console.log("confirmado");
+        }
+        else{
+            console.log("Não confirmado");
+        }
+        return;
         
         fetch("http://localhost:3001/api/reserves/cancel/" + e.target.id, {
             method: "PUT",
@@ -43,8 +68,8 @@ class Listagem extends Component {
     genDatas(d){
         var day_begin = new Date(d.day_begin);
         var day_end = new Date(d.day_end);
-        console.log(day_begin);
-        console.log(day_begin.getUTCDate());
+        //console.log(day_begin);
+        //console.log(day_begin.getUTCDate());
         //day_begin.setDate(day_begin.getDate()+1);
         //day_end.setDate(day_begin.getDate()+1);
 
@@ -71,7 +96,7 @@ class Listagem extends Component {
 
     getDatas(date){
         var datas = []
-        console.log(date);
+        //console.log(date);
         if(date){
             return date.map( d => (
                 <div key={d._id}>
@@ -106,31 +131,32 @@ class Listagem extends Component {
                     a.push(json.data.reserves.pop());
                 }
 
-                listReserve = a.map( r => (
-                    <ListGroupItem key={r._id}>
-                        <Row>
-                            <Col xs = "auto">
-                                Sala: {r.room.cod}<br/>
-                            </Col>
-                            <Col>
-                                Status: {r.status}
-                            </Col>
-                            <Button id={r._id} onClick={this.handleClick} disabled={r.status === 'cancelada'} color="danger">Cancelar</Button>
-                        </Row>
-                        <Row>
-                            <Col xs="2">
-                                Data(s):
-                            </Col>
-                            <Col>
-                                Horário:
-                            </Col>
-                        </Row>
-                        {this.getDatas(r.date)}
-                        <br/><p>Justificativa:<br/>{r.justification}</p>
-                    </ListGroupItem>
-                ));
+                //listReserve = a.map( r => (
+                    //<ListGroupItem key={r._id}>
+                        //<Row>
+                            //<Col xs = "auto">
+                                //Sala: {r.room.cod}<br/>
+                            //</Col>
+                            //<Col>
+                                //Status: {r.status}
+                            //</Col>
+                            //<Button id={r._id} onClick={this.handleClick} disabled={r.status === 'cancelada'} color="danger">Cancelar</Button>
+                        //</Row>
+                        //<Row>
+                            //<Col xs="2">
+                                //Data(s):
+                            //</Col>
+                            //<Col>
+                                //Horário:
+                            //</Col>
+                        //</Row>
+                        //{this.getDatas(r.date)}
+                        //<br/><p>Justificativa:<br/>{r.justification}</p>
+                    //</ListGroupItem>
+                //));
 
-                this.setState({listaReserva:listReserve});
+                console.log(a);
+                this.setState({listaReserva:a});
 
             }
             else {
@@ -150,8 +176,15 @@ class Listagem extends Component {
                 <Container>
                     <h1>Minhas Reservas</h1>
                     <ListGroup>
+                        {
 
-                        {this.state.listaReserva}
+                            this.state.listaReserva.map( r => {
+                                return(
+                                    <ItemReserva key={r._id} reserva={Object.assign({},r)} handleClick={this.handleClick} tipo='user'/>
+                                )
+                            })
+
+                        }
 
                     </ListGroup>
                 </Container>

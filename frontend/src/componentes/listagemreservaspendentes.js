@@ -7,13 +7,24 @@ import {
   ListGroup,
   ListGroupItem
 } from "reactstrap";
+import ItemReserva from '../componentes/itemlistareserva.js'
 
 class ListagemReservasPendentes extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      listaReserva: "Carregando reservas...",
+            listaReserva:[{
+                _id:'',
+                room:{cod:''},
+                status:'',
+                date:[],
+                justification:'',
+                user:{
+                    name:'',
+                    email:'',
+                }
+            }] ,
       reserva: null
     };
 
@@ -23,6 +34,7 @@ class ListagemReservasPendentes extends Component {
 
   async handleClick(e) {
     let action = e.target.value;
+    let id = e.target.id;
     await fetch(`http://localhost:3001/api/reserves/${e.target.id}`, {
       method: "PUT",
       body: JSON.stringify({ status: action }),
@@ -36,6 +48,14 @@ class ListagemReservasPendentes extends Component {
         if (json.success) {
           this.state.reserva = json.data.reserve;
           alert(`Reserva ${action} com sucesso`);
+          for (var i = 0;i < this.state.listaReserva.length;i++){
+              if (id === this.state.listaReserva[i]._id){
+                  var l = this.state.listaReserva;
+                  l.splice(i,1);
+                  this.setState({listaReserva:l});
+                  break;
+                }
+          }
           // window.location.reload();
         } else {
           // alert("Reserva não encontrada");
@@ -157,49 +177,7 @@ class ListagemReservasPendentes extends Component {
           for (var i = 0; i < json.data.reserves.length; i++) {
             a.push(json.data.reserves.pop());
           }
-          listReserve = a.map(r => (
-            <ListGroupItem key={r._id}>
-              <Row>
-                <Col xs="auto">
-                  Sala: {r.room.cod}
-                  <br />
-                </Col>
-                <Col>
-                  Solicitante: {r.user.name ? r.user.name : r.user.email}
-                </Col>
-                <Button
-                  id={r._id}
-                  value={"aceita"}
-                  onClick={this.handleClick}
-                  color="success"
-                >
-                  Aceitar
-                </Button>
-                &nbsp;&nbsp;
-                <Button
-                  id={r._id}
-                  value={"rejeitada"}
-                  onClick={this.handleClick}
-                  color="danger"
-                >
-                  Rejeitar
-                </Button>
-              </Row>
-              <Row>
-                <Col xs="2">Data(s):</Col>
-                <Col>Horário:</Col>
-              </Row>
-              {this.getDatas(r.date)}
-              <br />
-              <p>
-                Justificativa:
-                <br />
-                {r.justification}
-              </p>
-            </ListGroupItem>
-          ));
-
-          this.setState({ listaReserva: listReserve });
+          this.setState({ listaReserva: a });
         } else {
           this.setState({
             listaReserva: "Não foi possível obter as reservas"
@@ -216,11 +194,22 @@ class ListagemReservasPendentes extends Component {
 
   render() {
     return (
-      <div>
-        <Container>
-          <ListGroup>{this.state.listaReserva}</ListGroup>
-        </Container>
-      </div>
+        <div>
+            <Container>
+                <ListGroup>
+                    {
+
+                        this.state.listaReserva.map( r => {
+                            return(
+                                <ItemReserva key={r._id} reserva={Object.assign({},r)} handleClick={this.handleClick} tipo='adm'/>
+                            )
+                        })
+
+                    }
+
+                </ListGroup>
+            </Container>
+        </div>
     );
   }
 }
