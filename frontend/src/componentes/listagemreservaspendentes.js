@@ -8,7 +8,7 @@ import {
   ListGroupItem
 } from "reactstrap";
 import ItemReserva from '../componentes/itemlistareserva.js'
-
+import Rejeitar from './rejeitar.js'
 class ListagemReservasPendentes extends Component {
   constructor(props) {
     super(props);
@@ -25,13 +25,27 @@ class ListagemReservasPendentes extends Component {
                     email:'',
                 }
             }] ,
-      reserva: null
+
+      reserva: null,
+      _id:''
     };
 
+   
+    this.toggle = this.toggle.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
+  toggle(e) {
+    this.setState({
+        modal: !this.state.modal,
+        _id: e.target.id
+    });
+    
+}
+
   async handleClick(e) {
+    this.toggle(e);
+    
     let action = e.target.value;
     let id = e.target.id;
     await fetch(`http://localhost:3001/api/reserves/${e.target.id}`, {
@@ -156,10 +170,11 @@ class ListagemReservasPendentes extends Component {
                                 <ItemReserva key={r._id} reserva={Object.assign({},r)} handleClick={this.handleClick} tipo='adm'/>
                             )
                         })
-
+                        
                     }
-
+                    
                 </ListGroup>
+                <Rejeitar id = {this.state._id} modal={this.state.modal} toggle={this.toggle}/>
             </Container>
         </div>
     );
