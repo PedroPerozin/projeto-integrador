@@ -5,7 +5,8 @@ import {
   Row,
   Col,
   ListGroup,
-  ListGroupItem
+  ListGroupItem,
+  Alert
 } from "reactstrap";
 import ItemReserva from '../componentes/itemlistareserva.js'
 
@@ -14,17 +15,8 @@ class ListagemReservasPendentes extends Component {
     super(props);
 
     this.state = {
-            listaReserva:[{
-                _id:'',
-                room:{cod:''},
-                status:'',
-                date:[],
-                justification:'',
-                user:{
-                    name:'',
-                    email:'',
-                }
-            }] ,
+            listaReserva:[],
+      statusMessage:'',
       reserva: null
     };
 
@@ -54,6 +46,9 @@ class ListagemReservasPendentes extends Component {
                   this.setState({listaReserva:l});
                   break;
                 }
+          }
+          if(this.state.listaReserva.length == 0){
+            this.setState({ statusMessage: <Alert color='success'> Nenhuma reserva encontrada </Alert>});
           }
           // window.location.reload();
         } else {
@@ -130,17 +125,17 @@ class ListagemReservasPendentes extends Component {
             a.push(json.data.reserves.pop());
           }
           this.setState({ listaReserva: a });
+          if(a.length != 0){
+            this.setState({listaReserva:a, statusMessage:''});
+          }
+          else {
+            this.setState({ statusMessage: <Alert color='success'> Nenhuma reserva encontrada </Alert>});
+          }
         } else {
-          this.setState({
-            listaReserva: "Não foi possível obter as reservas"
-          });
         }
       })
       .catch(error => {
-        this.setState({ listaReserva: "Falha na conexão com o servidor." });
-        alert(
-          "Não foi possível conectar com o servidor. Tente novamente mais tarde"
-        );
+        this.setState({statusMessage: <Alert color="danger"> Não foi possível conectar com o servidor </Alert>});
       });
   }
 
@@ -148,6 +143,7 @@ class ListagemReservasPendentes extends Component {
     return (
         <div>
             <Container>
+                {this.state.statusMessage}
                 <ListGroup>
                     {
 

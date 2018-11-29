@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
 import { ListGroup, ListGroupItem } from 'reactstrap';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Alert } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import MainNavbar from '../componentes/MainNavbar.js'
 import ItemReserva from '../componentes/itemlistareserva.js'
@@ -13,13 +13,7 @@ class Listagem extends Component {
         super(props);
 
         this.state = {
-            listaReserva:[{
-                _id:'',
-                room:{cod:''},
-                status:'',
-                date:[],
-                justification:'',
-            }] 
+            listaReserva:[] 
         };
 
         this.handleClick = this.handleClick.bind(this);
@@ -32,12 +26,9 @@ class Listagem extends Component {
             for(i = 0;i < r.length;i++)
                 if(r[i]._id === e.target.id)
                     break;
-            console.log(i);
 
             r[i].status = 'cancelada';
-            console.log(r[i]);
             this.setState({listaReserva:r});
-            console.log(r);
         }
         else{
             return;
@@ -62,7 +53,7 @@ class Listagem extends Component {
     }
 
     componentWillMount(){
-        console.log(localStorage.getItem('token'));
+        this.setState({statusMessage: <Alert color='warning'> Obtendo reservas... </Alert>});
         fetch("http://localhost:3001/api/reserves/from-user/?status=all", {
             method:"GET",
             headers: {
@@ -71,7 +62,6 @@ class Listagem extends Component {
             },
         }).then((response) => response.json()).then((json) => {
             if (json.success) {
-                console.log("a");
                 var listReserve = [];
                 var a = [];
 
@@ -80,16 +70,19 @@ class Listagem extends Component {
                     a.push(json.data.reserves.pop());
                 }
 
-                console.log(a);
-                this.setState({listaReserva:a});
+                if(a.length != 0){
+                    this.setState({listaReserva:a, statusMessage:''});
+                }
+                else {
+                    this.setState({ statusMessage: <Alert color='success'> Nenhuma reserva encontrada </Alert>});
+                }
 
             }
             else {
-                this.setState({listaReserva:'Não foi possível obter suas reservas'});
+                //
             }
         }).catch( error => {
-            this.setState({listaReserva:'Falha na conexão com o servidor.'});
-            alert("Não foi possível conectar com o servidor. Tente novamente mais tarde");
+            this.setState({statusMessage: <Alert color="danger"> Não foi possível conectar com o servidor </Alert>});
         });
     }
 
@@ -100,6 +93,7 @@ class Listagem extends Component {
                 <br/>
                 <Container>
                     <h1>Minhas Reservas</h1>
+                    {this.state.statusMessage}
                     <ListGroup>
                         {
 
