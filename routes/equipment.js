@@ -58,12 +58,13 @@ router.post('/', verifyToken, async (req, res) => {
     const newEquipment = new Equipment({
       ...req.body
     });
+
     await newEquipment.save();
     res.status(200).json({
       success: true,
       message: "Equipment has created",
       data: {
-        equipment: newEquipment
+        newEquipment
       }
     });
   } catch (error) {
