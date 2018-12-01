@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Col, Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 import axios from "axios";
 
+
 export default class Singup extends Component {
 
     constructor(props) {
@@ -10,26 +11,13 @@ export default class Singup extends Component {
         this.state = {
             admjustificativa: '',   
         };
-        this.handleClick = this.handleClick.bind(this);
+        this.handleChange = this.handleChange.bind(this)
     }
 
+    handleChange(event) {
+        this.setState({admjustificativa: event.target.value});
 
-    handleChange(e) {
-        const name = e.target.name;
-        const value = e.target.value;
-
-        this.setState({ [name]: value })
-
-    }
-
-   
-
-     handleClick() {
-       
-        console.log(this.props.id)
-        
       }
-
 
     
 
@@ -45,13 +33,13 @@ export default class Singup extends Component {
                             <Input type="textarea"
                                 name="admjustificativa"
                                 id="exampleText"
-                                onChange={(event) => this.handleChange(event)}
+                                onChange = {this.handleChange}
                             />
                         </FormGroup>
                     </Form>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="success" onClick={this.handleClick}>Enviar</Button>
+                    <Button color="success" value = {this.state.admjustificativa} onClick={this.props.rejeitar}>Enviar</Button>
                     <Button color="danger" onClick={this.props.toggle}>Cancelar</Button>
                 </ModalFooter>
             </Modal>

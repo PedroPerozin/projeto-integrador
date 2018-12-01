@@ -13,13 +13,7 @@ class Listagem extends Component {
         super(props);
 
         this.state = {
-            listaReserva:[{
-                _id:'',
-                room:{cod:''},
-                status:'',
-                date:[],
-                justification:'',
-            }] 
+            listaReserva:[] 
         };
 
         this.handleClick = this.handleClick.bind(this);
@@ -85,15 +79,17 @@ class Listagem extends Component {
 
             }
             else {
-                this.setState({listaReserva:'Não foi possível obter suas reservas'});
             }
         }).catch( error => {
-            this.setState({listaReserva:'Falha na conexão com o servidor.'});
+            console.log("Erro")
+            console.log(error)
             alert("Não foi possível conectar com o servidor. Tente novamente mais tarde");
         });
     }
 
     render() {
+        console.log("aljshgaiysgb")
+        console.log(this.state.listaReserva)
         return(
             <div>
                 <MainNavbar/>

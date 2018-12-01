@@ -112,7 +112,7 @@ export default class ItemReserva extends Component{
                             <Button
                                 id={this.props.reserva._id}
                                 value={"rejeitada"}
-                                onClick={this.props.handleClick}
+                                onClick={this.props.toggle}
                                 color="danger"
                             >
                                 Rejeitar
