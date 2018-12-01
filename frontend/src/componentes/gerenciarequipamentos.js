@@ -12,7 +12,6 @@ class GerenciamentoEquipamentos extends Component{
 
         this.state = {
             name: '',
-            quantity: '',
             description: ''
         };
 
@@ -40,7 +39,6 @@ class GerenciamentoEquipamentos extends Component{
             },
             body: JSON.stringify({
                 "name": this.state.name,
-                "quantity": this.state.quantity,
                 "description": this.state.description
             })
         }).then((response) => response.json()).then((json) => {
@@ -71,14 +69,6 @@ class GerenciamentoEquipamentos extends Component{
                                             type="text"
                                             name="name"
                                             onChange={(e) => this.setState({ name: e.target.value })}
-                                            required />
-                                    </FormGroup>
-                                    <FormGroup>
-                                        <Label for="name">Quantidade</Label>
-                                        <Input
-                                            type="number"
-                                            name="quantity"
-                                            onChange={(e) => this.setState({ quantity: e.target.value })}
                                             required />
                                     </FormGroup>
                                     <FormGroup>

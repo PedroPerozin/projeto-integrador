@@ -8,10 +8,6 @@ const EquipmentSchema = new Schema({
   },
   description: {
     type: Schema.Types.String,
-  },
-  quantity: {
-    type: Schema.Types.Number,
-    required: true
   }
 });
 
