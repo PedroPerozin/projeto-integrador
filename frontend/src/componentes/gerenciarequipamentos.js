@@ -61,10 +61,10 @@ class GerenciamentoEquipamentos extends Component{
                 <Container>
                     <Row>
                         <Col sm="12" md={{ size: 3, offset: 9 }}><Button color="success" onClick={this.toggle}>Cadastrar Equipamento</Button></Col>
-                        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                            <ModalHeader toggle={this.toggle}>Cadastro de Equipamento</ModalHeader>
-                            <ModalBody>
-                                <Form>
+                        <Modal isOpen={this.state.modal} toggle={this.toggle}>
+                            <Form onSubmit={this.handleSubmit}>
+                                <ModalHeader toggle={this.toggle}>Cadastro de Equipamento</ModalHeader>
+                                <ModalBody>
                                     <FormGroup>
                                         <Label for="name">Nome</Label>
                                         <Input
@@ -89,12 +89,11 @@ class GerenciamentoEquipamentos extends Component{
                                             onChange={(e) => this.setState({ description: e.target.value })}
                                             required />
                                     </FormGroup>
-                                </Form>
-                            </ModalBody>
-                            <ModalFooter>
-                                <Button type="submit" color="success" onClick={this.handleSubmit}>Cadastrar</Button>{' '}
-                                <Button color="danger" onClick={this.toggle}>Cancelar</Button>
-                            </ModalFooter>
+                                </ModalBody>
+                                <ModalFooter>
+                                    <Button type="submit" color="success" >Cadastrar</Button>
+                                </ModalFooter>
+                            </Form>
                         </Modal>
                     </Row>
                     <Row>
