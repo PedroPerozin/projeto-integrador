@@ -15,7 +15,6 @@ class Reserva extends Component {
 
     this.state = {
       salas: '',
-      equipamentos: '',
       room: '',
       day_end: '',
       day_begin: '',
@@ -49,28 +48,6 @@ class Reserva extends Component {
       }
     }).catch(error => {
       alert("Não foi possível conectar com o servidor para obter as salas. Tente novamente mais tarde");
-    });
-
-    fetch("http://localhost:3001/api/equipments", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "x-access-token": localStorage.getItem("token")
-      }
-    }).then((response) => response.json()).then((json) => {
-      if (json.success) {
-          var equipamentos = [<option> </option>];
-        for(var i = 0;i < json.data.equipments.length;i++){
-            equipamentos.push(<option>{json.data.equipments[i].name}</option>)
-        }
-        this.setState({equipamentos:equipamentos});
-
-      }
-      else {
-          alert("Não foi possível obter os equipamentos");
-      }
-    }).catch(error => {
-      alert("Não foi possível conectar com o servidor para obter os equipamentos. Tente novamente mais tarde");
     });
     
   }
@@ -203,12 +180,6 @@ class Reserva extends Component {
                   <Label for="exampleAddress">Sala</Label>
                   <Input type="select" name="select" id="exampleSelect" onChange={(e) => {this.setState({ room:e.target.value })}}>
                       {this.state.salas}
-                  </Input>
-                </FormGroup>
-                <FormGroup>
-                  <Label for="exampleSelectMulti">Equipamentos</Label>
-                  <Input type="select" name="selectMulti" id="exampleSelectMulti" onChange={(e) => {this.setState({ equipments:e.target.value })}} multiple>
-                      {this.state.equipamentos}
                   </Input>
                 </FormGroup>
                 </Col>
