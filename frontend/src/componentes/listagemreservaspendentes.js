@@ -29,12 +29,8 @@ class ListagemReservasPendentes extends Component {
 
       reserva: null,
       admjustification: '',
-      campo: {
-        target:{
-          id: '',
-          value: ''
-        }
-      }
+      _idRejeicao: ''
+      
     };
 
 
@@ -44,30 +40,33 @@ class ListagemReservasPendentes extends Component {
   }
 
    toggle(e) {
-    this.state.campo.target.id = e.target.id
-    this.state.campo.target.value = e.target.value
      this.setState({
-      modal: !this.state.modal
+      modal: !this.state.modal,
+      _idRejeicao: e.target.id
     });
   
   }
- async rejeitar(e) {
-    
-    await this.setState({
-      admjustification: e.target.value
-    });
-    if(this.state.admjustification == ''){
-      return alert("Digite uma justificativa para a rejeição")
-    }
-    else{
-    this.handleClick(this.state.campo);
-    this.setState({
-      modal: !this.state.modal
-    });
-    this.state.campo.target.id = ''
-    this.state.campo.target.value = ''
-    this.state.admjustification = ''
+ async rejeitar(e, justification) {
+  if(justification === ''){
+    return alert("Digite uma justificativa para a rejeição")
   }
+    await this.setState({
+      admjustification: justification
+    });
+  
+      
+    this.handleClick({ 
+      target:{
+        id: this.state._idRejeicao,
+        value: 'rejeitada'
+      }
+    });
+    this.setState({
+      modal: !this.state.modal,  
+    });
+    
+    
+  
 
 }
   async handleClick(e) {
@@ -75,11 +74,18 @@ class ListagemReservasPendentes extends Component {
 
     let action = e.target.value;
     let id = e.target.id;
+    var justification
+    if(action === 'aceita'){
+      justification = ''
+    }
+    else{
+      justification = this.state.admjustification
+    }
     await fetch(`http://localhost:3001/api/reserves/${e.target.id}`, {
       method: "PUT",
       body: JSON.stringify({
         status: action,
-        admjustification: this.state.admjustification
+        admjustification: justification
       }),
       headers: {
         "Content-Type": "application/json",
@@ -208,7 +214,7 @@ class ListagemReservasPendentes extends Component {
             }
 
           </ListGroup>
-          <Rejeitar handleClick={this.state.handleClick} rejeitar={this.rejeitar} modal={this.state.modal} toggle={this.toggle} />
+          <Rejeitar  rejeitar={this.rejeitar} modal={this.state.modal} toggle={this.toggle} />
         </Container>
       </div>
     );

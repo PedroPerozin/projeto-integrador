@@ -12,19 +12,24 @@ export default class Singup extends Component {
             admjustificativa: '',   
         };
         this.handleChange = this.handleChange.bind(this)
+        this.handleClick = this.handleClick.bind(this)
     }
 
     handleChange(event) {
         this.setState({admjustificativa: event.target.value});
 
       }
-
+    handleClick(e){
+        this.props.rejeitar(e, this.state.admjustificativa)
+        console.log(this.state.admjustificativa);
+        this.setState({admjustificativa: ''})
+    }
     
 
     render() {
         return (
 
-            <Modal isOpen={this.props.modal} toggle={this.props.toggle} className={this.props.className}>
+            <Modal isOpen={this.props.modal} toggle={this.props.toggle}>
                 <ModalHeader toggle={this.props.toggle}>Diga a justificativa para a rejeição</ModalHeader>
                 <ModalBody>
                     <Form>
@@ -39,7 +44,7 @@ export default class Singup extends Component {
                     </Form>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="success" value = {this.state.admjustificativa} onClick={this.props.rejeitar}>Enviar</Button>
+                    <Button color="success" value = '' onClick={this.handleClick}>Enviar</Button>
                     <Button color="danger" onClick={this.props.toggle}>Cancelar</Button>
                 </ModalFooter>
             </Modal>
