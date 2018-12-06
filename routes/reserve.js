@@ -384,7 +384,7 @@ router.post('/', verifyToken, async (req, res) => {
 
         if (roomReserves) {
             for (i = 0; i < roomReserves.length; i++) {
-                if (roomReserves[i].status === 'cancelada' || roomReserves[i].status === 'pendente') {
+                if (roomReserves[i].status === 'cancelada' || roomReserves[i].status === 'pendente' || roomReserves[i].status == 'rejeitada') {
                     continue;
                 }
                 for (j = 0; j < roomReserves[i].date.length; j++) {
