@@ -6,8 +6,13 @@ const EquipmentSchema = new Schema({
     type: Schema.Types.String,
     required: true
   },
+  available: {
+    type: Schema.Types.Boolean,
+    required: true,
+    default: true
+  },
   description: {
-    type: Schema.Types.String,
+    type: Schema.Types.String
   }
 });
 
