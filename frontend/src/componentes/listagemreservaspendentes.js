@@ -8,35 +8,85 @@ import {
   ListGroupItem
 } from "reactstrap";
 import ItemReserva from '../componentes/itemlistareserva.js'
-
+import Rejeitar from './rejeitar.js'
+import { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } from "constants";
 class ListagemReservasPendentes extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-            listaReserva:[{
-                _id:'',
-                room:{cod:''},
-                status:'',
-                date:[],
-                justification:'',
-                user:{
-                    name:'',
-                    email:'',
-                }
-            }] ,
-      reserva: null
+      listaReserva: [{
+        _id: '',
+        room: { cod: '' },
+        status: '',
+        date: [],
+        justification: '',
+        user: {
+          name: '',
+          email: '',
+        }
+      }],
+
+      reserva: null,
+      admjustification: '',
+      _idRejeicao: ''
+      
     };
 
+
+    this.toggle = this.toggle.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.rejeitar = this.rejeitar.bind(this)
   }
 
+   toggle(e) {
+     this.setState({
+      modal: !this.state.modal,
+      _idRejeicao: e.target.id
+    });
+  
+  }
+ async rejeitar(e, justification) {
+  if(justification === ''){
+    return alert("Digite uma justificativa para a rejeição")
+  }
+    await this.setState({
+      admjustification: justification
+    });
+  
+      
+    this.handleClick({ 
+      target:{
+        id: this.state._idRejeicao,
+        value: 'rejeitada'
+      }
+    });
+    this.setState({
+      modal: !this.state.modal,  
+    });
+    
+    
+  
+
+}
   async handleClick(e) {
+    
+
     let action = e.target.value;
     let id = e.target.id;
+    var justification
+    if(action === 'aceita'){
+      justification = ''
+    }
+    else{
+      justification = this.state.admjustification
+    }
     await fetch(`http://localhost:3001/api/reserves/${e.target.id}`, {
       method: "PUT",
-      body: JSON.stringify({ status: action }),
+      body: JSON.stringify({
+        status: action,
+        admjustification: justification
+      }),
       headers: {
         "Content-Type": "application/json",
         "x-access-token": localStorage.getItem("token")
@@ -47,13 +97,13 @@ class ListagemReservasPendentes extends Component {
         if (json.success) {
           this.state.reserva = json.data.reserve;
           alert(`Reserva ${action} com sucesso`);
-          for (var i = 0;i < this.state.listaReserva.length;i++){
-              if (id === this.state.listaReserva[i]._id){
-                  var l = this.state.listaReserva;
-                  l.splice(i,1);
-                  this.setState({listaReserva:l});
-                  break;
-                }
+          for (var i = 0; i < this.state.listaReserva.length; i++) {
+            if (id === this.state.listaReserva[i]._id) {
+              var l = this.state.listaReserva;
+              l.splice(i, 1);
+              this.setState({ listaReserva: l });
+              break;
+            }
           }
           // window.location.reload();
         } else {
@@ -75,12 +125,12 @@ class ListagemReservasPendentes extends Component {
             this.state.reserva.user.name
               ? this.state.reserva.user.name
               : this.state.reserva.user.email
-          }
+            }
           A reserva que você solicitou para ${
             this.state.reserva.date.day_begin
-          } à ${this.state.reserva.date.day_end} na sala ${
+            } à ${this.state.reserva.date.day_end} na sala ${
             this.state.reserva.room.cod
-          } foi ${action}!`
+            } foi ${action}!`
         }),
         headers: {
           "Content-Type": "application/json",
@@ -98,7 +148,7 @@ class ListagemReservasPendentes extends Component {
           } else {
             alert(
               `Não foi possível enviar o email para ${
-                this.state.reserva.user.email
+              this.state.reserva.user.email
               }`
             );
           }
@@ -110,6 +160,8 @@ class ListagemReservasPendentes extends Component {
         });
     }
   }
+
+
 
   componentWillMount() {
     fetch("http://localhost:3001/api/reserves/filter/pendente", {
@@ -144,24 +196,27 @@ class ListagemReservasPendentes extends Component {
       });
   }
 
+
+
   render() {
     return (
-        <div>
-            <Container>
-                <ListGroup>
-                    {
+      <div>
+        <Container>
+          <ListGroup>
+            {
 
-                        this.state.listaReserva.map( r => {
-                            return(
-                                <ItemReserva key={r._id} reserva={Object.assign({},r)} handleClick={this.handleClick} tipo='adm'/>
-                            )
-                        })
+              this.state.listaReserva.map(r => {
+                return (
+                  <ItemReserva key={r._id} reserva={Object.assign({}, r)} modal={this.state.modal} handleClick={this.handleClick} toggle={this.toggle} tipo='adm' />
+                )
+              })
 
-                    }
+            }
 
-                </ListGroup>
-            </Container>
-        </div>
+          </ListGroup>
+          <Rejeitar  rejeitar={this.rejeitar} modal={this.state.modal} toggle={this.toggle} />
+        </Container>
+      </div>
     );
   }
 }
