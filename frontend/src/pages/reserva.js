@@ -159,6 +159,10 @@ class Reserva extends Component {
             alert("Data de inicio maior que data de fim");
             return;
         }
+        if(this.state.frequencia[j] === 'Não se repete' && new Date(this.state.day_begin[j]) < new Date){
+          alert("Você não pode fazer uma reserva em um dia anterior ao de hoje")
+          return;
+        }
         if(this.state.frequencia[j] === 'Não se repete'){
           reserve.date.push({
             "day_begin": this.state.day_begin[j],
