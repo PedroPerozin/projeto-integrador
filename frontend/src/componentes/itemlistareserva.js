@@ -63,6 +63,10 @@ export default class ItemReserva extends Component{
     }
     render(){
         console.log(this.props);
+        var admj;
+        if (this.props.reserva.status == 'rejeitada'){
+            admj = <p>Jutificativa Rejeição:<br/>{this.props.reserva.admjustification}</p>
+            }
         if(this.props.reserva){
             if (this.props.tipo == 'user'){
                 return(
@@ -86,6 +90,7 @@ export default class ItemReserva extends Component{
                         </Row>
                         {this.getDatas(this.props.reserva.date)}
                         <br/><p>Justificativa:<br/>{this.props.reserva.justification}</p>
+                        {admj}
                     </ListGroupItem>
                 )
             }
