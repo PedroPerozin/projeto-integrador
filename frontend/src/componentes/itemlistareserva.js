@@ -78,7 +78,7 @@ export default class ItemReserva extends Component{
                             <Col>
                                 Status: {this.props.reserva.status}
                             </Col>
-                            <Button id={this.props.reserva._id} onClick={this.props.handleClick} disabled={this.props.reserva.status === 'cancelada'} color="danger">Cancelar</Button>
+                            <Button id={this.props.reserva._id} onClick={this.props.handleClick} disabled={this.props.reserva.status === 'cancelada' || this.props.reserva.status == 'rejeitada'} color="danger">Cancelar</Button>
                         </Row>
                         <Row>
                             <Col xs="2">
