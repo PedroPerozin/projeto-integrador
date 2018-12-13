@@ -3,11 +3,12 @@ import { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import MainNavbar from '../componentes/MainNavbar.js'
-import moment from 'moment'
+import moment, { relativeTimeThreshold } from 'moment'
 import { getEmail } from '../authToken.js'
 import ItemData from '../componentes/itemdata.js' 
 
 var horarios = ['m1','m2','m3','m4','m5','m6','t1','t2','t3','t4','t5','t6','n1','n2','n3','n4','n5']
+var hr = ['M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'N1', 'N2', 'N3','N4', 'N5']
 
 class Reserva extends Component {
 
@@ -159,10 +160,36 @@ class Reserva extends Component {
             alert("Data de inicio maior que data de fim");
             return;
         }
-        if(this.state.frequencia[j] === 'Não se repete' && new Date(this.state.day_begin[j]) < new Date){
-          alert("Você não pode fazer uma reserva em um dia anterior ao de hoje")
+        if(new Date(this.state.day_begin[j]) < (new Date).setHours(-2,0,0,0)){
+          alert("Data de inicio não pode ser anterior à data de hoje") 
           return;
         }
+        if(this.state.frequencia[j] == 'Não se repete'){ 
+          //var c = this.state.hourb.toLowerCase()  
+           // console.log(c)
+          var a = new Date().getHours()
+          var aux = 7.3 
+          h = 7;
+          m = 30;
+          hinicio = this.state.hourb.toLowerCase();
+          for(i=0; i < horarios.length; i++){
+          
+          if(hinicio == horarios[i]){
+            break;
+          }
+            m = m + 50;
+            if (m >= 60){
+              h++;
+              m = m - 60;
+            }
+          }
+          a = new Date().setHours(h,m,0,0);
+          if(aux < a){
+            alert("Voce não pode fazer uma reserva de um horario que já se passou")
+            return;
+          }
+        }
+
         if(this.state.frequencia[j] === 'Não se repete'){
           reserve.date.push({
             "day_begin": this.state.day_begin[j],
