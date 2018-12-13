@@ -1,6 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import MainNavbar from '../componentes/MainNavbar.js'
 import moment from 'moment'
@@ -15,6 +16,8 @@ class Reserva extends Component {
 
     this.state = {
       salas: '',
+      equipamentos: [],
+      equipamentosSelecionados: [],
       room: '',
       day_end: '',
       day_begin: '',
@@ -22,10 +25,20 @@ class Reserva extends Component {
       houre: 'm1',
       day: '',
       frequencia: 'Não se repete',
-      justificativa: ''
+      justificativa: '',
+      modal: false,
+      teste: ''
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggle = this.toggle.bind(this);
+    this.addEquipment = this.addEquipment.bind(this);
+  }
+
+  toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
   }
 
   componentWillMount(){
@@ -50,10 +63,38 @@ class Reserva extends Component {
       alert("Não foi possível conectar com o servidor para obter as salas. Tente novamente mais tarde");
     });
     
+    fetch("http://localhost:3001/api/equipments", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-access-token": localStorage.getItem("token")
+      }
+    }).then((response) => response.json()).then((json) => {
+      if (json.success) {
+          var equipamentos = [];
+        for(var i = 0;i < json.data.equipments.length;i++){
+            equipamentos.push(json.data.equipments[i])
+        }
+        this.setState({equipamentos:equipamentos});
+
+      }
+      else {
+          alert("Não foi possível obter os equipamentos");
+      }
+    }).catch(error => {
+      alert("Não foi possível conectar com o servidor para obter os equipamentos. Tente novamente mais tarde");
+    });
+    
+  }
+
+  addEquipment(){
+    this.state.equipamentosSelecionados.push(this.state.teste)
+    console.log(this.state.equipamentosSelecionados)
   }
 
   handleSubmit(e) {
     e.preventDefault();
+    console.log(this.state.equipamentosSelecionados);
     var hourlist = [];
     var between = false;
     var i;
@@ -83,6 +124,7 @@ class Reserva extends Component {
     }
     var reserve = {
         "user": getEmail(),
+        "equipments": this.state.equipamentos,
         "room":this.state.room.toUpperCase(),
         "status": "pendente",
         "justification":this.state.justificativa
@@ -137,7 +179,6 @@ class Reserva extends Component {
         reserve.date = dates;
     }
         
-    console.log(reserve);
     fetch("http://localhost:3001/api/reserves/", {
       method: "POST",
       headers: {
@@ -163,6 +204,7 @@ class Reserva extends Component {
   }
 
   render() {
+    var a = this.state.equipamentos.map(e => <option>{e.name}</option>);
     return (
 
       <div>
@@ -175,14 +217,34 @@ class Reserva extends Component {
                 <h1 className="h3 mb-3 font-weight-normal">Reserva</h1>
 
                 <Row>
-                    <Col xs="auto">
-                <FormGroup>
-                  <Label for="exampleAddress">Sala</Label>
-                  <Input type="select" name="select" id="exampleSelect" onChange={(e) => {this.setState({ room:e.target.value })}}>
-                      {this.state.salas}
-                  </Input>
-                </FormGroup>
-                </Col>
+                  <Col xs="auto">
+                    <FormGroup>
+                      <Label for="exampleAddress">Sala</Label>
+                        <Input type="select" name="select" id="exampleSelect" onChange={(e) => {this.setState({ room:e.target.value })}}>
+                          {this.state.salas}
+                        </Input>
+                    </FormGroup>
+                  </Col>
+                  
+                  <Col sm={{ size: 'auto', offset: 7 }}>
+                    <Button color="success" onClick={this.toggle}>Adicionar Equipamentos</Button>
+                    <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                      <ModalHeader toggle={this.toggle}>Equipamentos</ModalHeader>
+                      <ModalBody>
+                        <FormGroup>
+                          <Label for="exampleAddress">Selecione equipamentos</Label>
+                          <Input type="select" name="select" id="exampleSelect" onChange={(e) => {this.setState({ teste: e.target.value })}}>
+                            {a}
+                          </Input>
+                        <Button color=""onClick={this.inserir}></Button>
+                        </FormGroup>
+                        <Button color="success" onClick={this.addEquipment}>Ok</Button>
+                      </ModalBody>
+                      <ModalFooter>
+                        <Button color="secondary" onClick={this.toggle}>Fechar</Button>
+                      </ModalFooter>
+                    </Modal>
+                  </Col>
                 </Row>
 
                 <Row>
